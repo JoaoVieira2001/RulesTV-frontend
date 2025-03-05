@@ -1,0 +1,44 @@
+<div class="navbar-container">
+  <nav class="navbar">
+
+    <div class="nav-left-container">
+      <ul class="nav-links">
+        <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
+        <li><a routerLink="/series" routerLinkActive="active">Series</a></li>
+        <li><a routerLink="/movies" routerLinkActive="active">Movies</a></li>
+        <li><a routerLink="/watchlist" routerLinkActive="active">Watchlist</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-center-container">
+      <img class="logo-image" src="assets/images/Logo_2.png" alt="Center Logo" (click)="navigateToHome()">
+    </div>
+
+
+    <div class="nav-right-container">
+
+      <button class="icon-btn">
+        <i class="fas fa-search"></i>
+      </button>
+
+      <button class="icon-btn">
+        <i class="fas fa-bell"></i>
+      </button>
+
+      <div class="profile-container">
+        <img src="assets/images/Profile_Avatar.png" alt="" class="avatar">
+        <span class="username">João Vieira</span>
+        <div class="dropdown">
+          <div class="dropdown-content">
+            <a routerLink="/edit-profile">Edit Profile</a>
+            <a routerLink="/faq">FAQ</a>
+            <a routerLink="/logout">Log Out</a>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+  </nav>
+</div>

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration, withEventReplay } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from '../routes/app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
@@ -17,7 +17,13 @@ import { SelectProfileComponent } from './select-profile/select-profile.componen
 import { SeriesComponent } from './series/series.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import {ButtonComponent} from '../components/Button/button.component';
 import { WatchlistComponent } from './watchlist/watchlist.component';
+import { NavbarComponent } from '../components/Navbar/navbar.component';
+import { FooterComponent } from '../components/Footer/footer.component';
+import { ForgotPasswordVerifyComponent } from './forgot-password-verify/forgot-password-verify.component';
+import {Select} from 'primeng/select';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -36,11 +42,17 @@ import { WatchlistComponent } from './watchlist/watchlist.component';
     SeriesComponent,
     SignInComponent,
     SignUpComponent,
-    WatchlistComponent
+    WatchlistComponent,
+    ButtonComponent,
+    NavbarComponent,
+    FooterComponent,
+    ForgotPasswordVerifyComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    Select,
+    FormsModule
   ],
   providers: [
     provideClientHydration(withEventReplay())

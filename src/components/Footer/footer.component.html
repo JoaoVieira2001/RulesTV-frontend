@@ -1,0 +1,29 @@
+<footer class="footer">
+  <div class="footer-links">
+    <a href="/faq">FAQ</a>
+    <a href="#">Terms of Use</a>
+    <a href="#">Privacy</a>
+    <a href="#">Cookie Preferences</a>
+
+    <p-select
+      [options]="languages"
+      [(ngModel)]="selectedLanguage"
+      optionLabel="label"
+      placeholder="🌐 Language"
+      class="dropdown"
+      (onChange)="onLanguageChange($event)"
+    ></p-select>
+
+  </div>
+
+  <div class="footer-social-container">
+    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+    <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+  </div>
+
+  <div class="footer-copy">© 2025 RulesTV, Inc.</div>
+
+</footer>
