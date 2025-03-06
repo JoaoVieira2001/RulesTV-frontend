@@ -1,7 +1,7 @@
-import { Component} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
-
-
+import Swiper from 'swiper';
+import {Navigation, Pagination} from 'swiper/modules';
 
 @Component({
   selector: 'app-home',
@@ -9,8 +9,13 @@ import {Router} from '@angular/router';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent {
-  images: { id: number; src: string; title: string; subtitle: string }[] = [];
+export class HomeComponent implements AfterViewInit{
+  images = [
+    { id: 1, src: 'assets/images/DisneyPlus/A_THousand_Blows.png', title: 'A Thousand Blows', subtitle: '' },
+    { id: 2, src: 'assets/images/DisneyPlus/Alien_Romulus.png', title: 'Alien Romulus', subtitle: '' },
+    { id: 3, src: 'assets/images/DisneyPlus/Inside_Out_2.png', title: 'Inside Out 2', subtitle: '' },
+    { id: 4, src: 'assets/images/DisneyPlus/Paradise.png', title: 'Paradise', subtitle: '' }
+  ];
 
   movies = [
     { src: 'assets/images/DisneyPlus/boba_fett.png', title: 'Auth Page' },
@@ -35,19 +40,24 @@ export class HomeComponent {
     this.router.navigate(['/faq']); // Navigate to FAQ page
   }
 
-  ngOnInit(): void {
-    this.images = [
-      { id: 1, src: 'assets/images/DisneyPlus/A_THousand_Blows.png', title: 'A Thousand Blows', subtitle: '' },
-      { id: 2, src: 'assets/images/DisneyPlus/Alien_Romulus.png', title: 'Alien Romulus', subtitle: '' },
-      { id: 3, src: 'assets/images/DisneyPlus/Inside_Out_2.png', title: 'Inside Out 2', subtitle: '' },
-      { id: 4, src: 'assets/images/DisneyPlus/Paradise.png', title: 'Paradise', subtitle: '' },
-    ];
+  @ViewChild('swiperContainer', { static: false }) swiperContainer!: ElementRef;
 
-    this.groupedMovies = this.chunkArray(this.movies, 6);
+  ngAfterViewInit() {
+    new Swiper(this.swiperContainer.nativeElement, {
+      modules: [Navigation, Pagination],
+      slidesPerView: 4,
+      slidesPerGroup: 3,
+      spaceBetween: 10,
+      loop: true,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev'
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true
+      }
+    });
+
   }
-
-  private chunkArray(arr: any[], size: number): any[] {
-    return arr.reduce((acc, _, i) => (i % size ? acc : [...acc, arr.slice(i, i + size)]), []);
-  }
-
 }

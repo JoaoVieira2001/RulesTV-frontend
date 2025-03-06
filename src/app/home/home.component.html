@@ -20,14 +20,28 @@
     </c-carousel>
   </div>
 
-  <div class="recommended-container">
-    <h2 class="recommended-title">Recommended Movies</h2>
+  <div class="all-carousel-container">
 
-
+    <div class="carousel-section">
+      <h2 class="section-title">Recommende Movies</h2>
+      <div class="swiper-container" #swiperContainer>
+        <div class="swiper-wrapper">
+          <div class="swiper-slide" *ngFor="let movie of movies" (click)="navigateToFAQ()">
+            <img class="movie-image" [src]="movie.src" [alt]="movie.title"/>
+          </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
 
   </div>
 
+
+
 </div>
+
 
 <router-outlet></router-outlet>
 <app-footer></app-footer>
