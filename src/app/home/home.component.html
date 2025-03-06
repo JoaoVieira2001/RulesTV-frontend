@@ -1,1 +1,33 @@
-<p>home works!</p>
+<app-navbar></app-navbar>
+
+<div class="home-container">
+
+  <!-- CoreUI Carousel (c-carousel) -->
+  <div class="carousel-container">
+    <c-carousel transition="crossfade" [animate]="true" [dark]="true">
+      <c-carousel-indicators></c-carousel-indicators>
+      <c-carousel-inner>
+        <c-carousel-item *ngFor="let image of images" [interval]="3000">
+          <img [src]="image.src" alt="{{ image.title }}" class="d-block w-100" loading="lazy" />
+          <c-carousel-caption class="d-none d-md-block">
+            <h3>{{ image.title }}</h3>
+            <p>{{ image.subtitle }}</p>
+          </c-carousel-caption>
+        </c-carousel-item>
+      </c-carousel-inner>
+      <c-carousel-control routerLink caption="Previous" direction="prev"></c-carousel-control>
+      <c-carousel-control routerLink caption="Next" direction="next"></c-carousel-control>
+    </c-carousel>
+  </div>
+
+  <div class="recommended-container">
+    <h2 class="recommended-title">Recommended Movies</h2>
+
+
+
+  </div>
+
+</div>
+
+<router-outlet></router-outlet>
+<app-footer></app-footer>

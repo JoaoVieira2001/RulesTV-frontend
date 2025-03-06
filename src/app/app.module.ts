@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration, withEventReplay } from '@angular/platform-browser';
-
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppRoutingModule } from '../routes/app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -24,6 +24,13 @@ import { FooterComponent } from '../components/Footer/footer.component';
 import { ForgotPasswordVerifyComponent } from './forgot-password-verify/forgot-password-verify.component';
 import {Select} from 'primeng/select';
 import {FormsModule} from '@angular/forms';
+import {
+  CarouselCaptionComponent,
+  CarouselComponent, CarouselControlComponent,
+  CarouselIndicatorsComponent,
+  CarouselInnerComponent,
+  CarouselItemComponent
+} from '@coreui/angular';
 
 @NgModule({
   declarations: [
@@ -50,12 +57,20 @@ import {FormsModule} from '@angular/forms';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     Select,
-    FormsModule
+    FormsModule,
+    CarouselComponent,
+    CarouselIndicatorsComponent,
+    CarouselInnerComponent,
+    CarouselItemComponent,
+    CarouselCaptionComponent,
+    CarouselControlComponent
   ],
   providers: [
     provideClientHydration(withEventReplay())
+
   ],
   bootstrap: [AppComponent]
 })
