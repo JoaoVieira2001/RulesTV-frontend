@@ -1,8 +1,40 @@
 <app-navbar></app-navbar>
 
 <div class="series-container">
-  <img class="home-image" src="assets/images/HomePage_Image.jpeg" alt="Center Logo">
+  <div class="header-container">
+
+    <div class="title-container">
+      <h1 class="title">SERIES</h1>
+    </div>
+
+    <div class="categories-container">
+      <div class="categories">
+          <button *ngFor="let category of categories">
+             {{category}}
+          </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="series-grid-container">
+    <div class="series-grid">
+      <div class="series-card" *ngFor="let series of seriesList">
+        <img [src]="series.image" [alt]="series.title" class="series-image" />
+      </div>
+    </div>
+  </div>
 </div>
 
+
 <app-footer></app-footer>
+
+
+<!--  <div class="series-grid-container">-->
+<!--    <div class="series-grid">-->
+<!--      <div *ngFor="let series of filteredSeries" class="series-card" (click)="navigateToDetails(series)">-->
+<!--        <img [src]="series.image" [alt]="series.title" class="series-image" />-->
+<!--        <h3 class="series-title">{{ series.title }}</h3>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
 
