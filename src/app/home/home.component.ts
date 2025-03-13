@@ -32,8 +32,6 @@ export class HomeComponent implements AfterViewInit{
     { src: 'assets/images/DisneyPlus/Tales Of the Jedi.png', title: 'Profile Avatar' },
   ];
 
-  groupedMovies: any[] = [];
-
   constructor(private router: Router) {}
 
   navigateToFAQ(): void {
@@ -41,12 +39,47 @@ export class HomeComponent implements AfterViewInit{
   }
 
   @ViewChild('swiperContainer', { static: false }) swiperContainer!: ElementRef;
+  @ViewChild('swiperContainer2', { static: false }) swiperContainer2!: ElementRef;
+  @ViewChild('swiperContainer3', { static: false }) swiperContainer3!: ElementRef;
 
   ngAfterViewInit() {
     new Swiper(this.swiperContainer.nativeElement, {
       modules: [Navigation, Pagination],
       slidesPerView: 4,
-      slidesPerGroup: 3,
+      slidesPerGroup: 2,
+      spaceBetween: 10,
+      loop: true,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev'
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true
+      }
+    });
+
+
+    new Swiper(this.swiperContainer2.nativeElement, {
+      modules: [Navigation, Pagination],
+      slidesPerView: 4,
+      slidesPerGroup: 2,
+      spaceBetween: 10,
+      loop: true,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev'
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true
+      }
+    });
+
+    new Swiper(this.swiperContainer3.nativeElement, {
+      modules: [Navigation, Pagination],
+      slidesPerView: 4,
+      slidesPerGroup: 2,
       spaceBetween: 10,
       loop: true,
       navigation: {
