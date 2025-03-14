@@ -33,6 +33,5 @@ export class MoviesComponent {
     { title: 'Thousand_Blades', image: 'assets/images/DisneyPlus/movies/TheLastKingOfScotland.png' },
     { title: 'Thousand_Blades', image: 'assets/images/DisneyPlus/movies/ThreeBillboards.png' },
     { title: 'Thousand_Blades', image: 'assets/images/DisneyPlus/Paradise.png' },
-
   ]
 }

@@ -1,8 +1,53 @@
 <app-navbar></app-navbar>
 
 <div class="watchlist-container">
-  <img class="home-image" src="assets/images/HomePage_Image.jpeg" alt="Center Logo">
+  <div class="header-container">
+    <div class="title-container">
+      <h1 class="title">WATCHLIST</h1>
+    </div>
+
+    <div class="categories-container">
+      <div class="categories">
+        <button *ngFor="let category of categories" (click)="filterCategory(category)">
+          {{category}}
+        </button>
+      </div>
+
+      <div class="filter-container">
+        <button class="filter-button">FILTER</button>
+        <div class="dropdown-menu">
+          <button>Newest</button>
+          <button>Oldest</button>
+          <button>Classification</button>
+          <button>Title: A-Z</button>
+          <button>Title: Z-A</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="watchlist-message" *ngIf="moviesList.length === 0 && seriesList.length === 0">
+    <p>Your Watchlist is empty !!! What are you waiting for?</p>
+    <p>Go add some Movies and Series that you want to see for your unique and awesome Watchlist.</p>
+  </div>
+
+  <div class="all-grid-container">
+    <div class="series-grid-container" *ngIf="selectedCategory === 'All' || selectedCategory === 'Series'">
+      <div class="series-grid">
+        <div class="series-card" *ngFor="let series of seriesList">
+          <img class="series-image" [src]="series.image" #seriesLenght alt="" />
+        </div>
+      </div>
+    </div>
+
+    <div class="movies-grid-container" *ngIf="selectedCategory === 'All' || selectedCategory === 'Movies'">
+      <div class="movies-grid">
+        <div class="movies-card" *ngFor="let movies of moviesList">
+          <img class="movies-image" [src]="movies.image" #moviesLenght alt="" />
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <app-footer></app-footer>
-
