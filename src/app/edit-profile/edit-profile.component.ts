@@ -7,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrl: './edit-profile.component.css'
 })
 export class EditProfileComponent {
+  profileName: string = '';
+  selectedLanguage: string = 'English';
+  contentRating: boolean = false;
+  profilePIN: boolean = false;
+
+  languages = ["English", "Portuguese", "Spanish", "Italian", "Deutsch"];
 
 }

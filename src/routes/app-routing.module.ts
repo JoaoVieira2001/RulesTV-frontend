@@ -23,18 +23,18 @@ const routes: Routes = [
   { path: 'watchlist', component: WatchlistComponent },
   { path: 'series', component: SeriesComponent },
   { path: 'movies', component: MoviesComponent },
-  { path: 'edit_profile', component: EditProfileComponent },
-  { path: 'enter_pin', component: EnterPinComponent },
+  { path: 'edit-profile', component: EditProfileComponent },
+  { path: 'enter-pin', component: EnterPinComponent },
   { path: 'faq', component: FaqComponent },
-  { path: 'forgot_password', component: ForgotPasswordComponent },
-  { path: 'forgot_password_replace', component: ForgotPasswordCreatePasswordComponent },
-  { path: 'forgot_password_verify', component: ForgotPasswordVerifyComponent },
-  { path: 'forgot_pin', component: ForgotPinComponent },
-  { path: 'forgot_pin_replace', component: ForgotPinReplaceComponent },
-  { path: 'select_avatar', component: SelectAvatarComponent },
-  { path: 'select_profile', component: SelectProfileComponent },
-  { path: 'sign_up', component: SignUpComponent },
-  { path: 'sign_in', component: SignInComponent }
+  { path: 'forgot-password', component: ForgotPasswordComponent },
+  { path: 'forgot-password_replace', component: ForgotPasswordCreatePasswordComponent },
+  { path: 'forgot-password_verify', component: ForgotPasswordVerifyComponent },
+  { path: 'forgot-pin', component: ForgotPinComponent },
+  { path: 'forgot-pin_replace', component: ForgotPinReplaceComponent },
+  { path: 'select-avatar', component: SelectAvatarComponent },
+  { path: 'select-profile', component: SelectProfileComponent },
+  { path: 'sign-up', component: SignUpComponent },
+  { path: 'sign-in', component: SignInComponent }
 ];
 
 @NgModule({

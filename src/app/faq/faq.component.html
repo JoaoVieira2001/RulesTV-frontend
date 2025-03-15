@@ -1,1 +1,26 @@
-<p>faq works!</p>
+<app-navbar></app-navbar>
+
+<div class="faq-container">
+  <div class="header-container">
+    <div class="title-container">
+      <h1 class="title">FAQ</h1>
+    </div>
+  </div>
+
+  <div class="faq-list">
+    <div class="faq-item" *ngFor="let item of faqItems; let i = index">
+      <div class="faq-question" (click)="toggleFAQ(i)">
+          {{item.question}}
+          <span class="icon">{{ item.open ? '▲' : '▼' }}</span>
+      </div>
+      <div class="faq-answer" *ngIf="item.open">
+        {{ item.answer }}
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+
+<app-footer></app-footer>
