@@ -38,7 +38,7 @@
 
 .profile-settings {
   width: 100%;
-  max-width: 600px;
+  max-width: 1200px;
   background: rgba(24, 37, 54, 0.9);
   border: 2px solid #59FDFE;
   border-radius: 10px;
@@ -48,12 +48,22 @@
   box-shadow: 0px 0px 10px #00EDD9;
 }
 
+.profile-sections {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 1400px;
+  gap: 100px;
+}
+
 .delete-profile{
   font-size: 1.5rem;
   color: white;
   text-align: center;
+  font-weight: bold;
   width: 100%;
-  max-width: 600px;
+  max-width: 650px;
   background: rgba(24, 37, 54, 0.9);
   border: 2px solid #59FDFE;
   border-radius: 10px;
@@ -91,7 +101,72 @@
   font-size: 1rem;
 }
 
+.profile-left, .profile-right {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 45%;
+  align-items: center;
+}
 
+.label-style{
+  font-weight: bold;
+}
 
+.under-label-style-content{
+  font-weight: lighter;
+  margin-right: 15px;
+}
+
+.under-label-style-pin{
+  font-weight: lighter;
+  margin-right: 19px;
+}
+
+.avatar {
+  width: 225px;
+  height: 225px;
+  border: 2px solid #59FDFE;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0px 0px 10px #00EDD9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.edit-avatar-btn {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background: rgba(24, 37, 54, 0.9);
+  border: none;
+  border-radius: 50%;
+  padding: 8px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 0px 5px rgba(0, 237, 217, 0.8);
+  transition: transform 0.2s ease-in-out;
+}
+
+.edit-avatar-btn:hover {
+  transform: scale(1.1);
+}
+
+.edit-avatar-btn img {
+  width: 35px;
+  height: 35px;
+}
 
 

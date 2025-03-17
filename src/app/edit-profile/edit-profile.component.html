@@ -6,29 +6,61 @@
       <h1 class="title">EDIT PROFILE</h1>
     </div>
 
-      <div class="profile-settings">
-        <div class="input-group">
-            <label for="profileName">Profile Name</label>
+    <div class="profile-sections">
+      <div class="profile-left">
+        <div class="profile-settings">
+          <div class="input-group">
+            <label class="label-style" for="profileName">Profile Name</label>
             <input type="text"
                    id="profileName"
                    [(ngModel)]="profileName"
                    placeholder="Enter profile name">
+          </div>
         </div>
+
+        <div class="profile-settings">
+          <div class="input-group">
+            <label class="label-style" for="appLanguage">App Language</label>
+            <select id="appLanguage" [(ngModel)]="selectedLanguage">
+              <option *ngFor="let lang of languages" [value]="lang">{{ lang }}</option>
+            </select>
+          </div>
+        </div>
+
+        <h1 class="delete-profile">Delete Profile</h1>
       </div>
 
-      <div class="profile-settings">
-        <div class="input-group">
-          <label for="appLanguage">App Language</label>
-          <select id="appLanguage" [(ngModel)]="selectedLanguage">
-            <option *ngFor="let lang of languages" [value]="lang">{{ lang }}</option>
-          </select>
+      <div class="profile-right">
+
+        <!-- Content Rating Toggle -->
+        <div class="profile-settings">
+          <div class="input-group">
+            <label class="label-style">Content Rating</label>
+            <label class="under-label-style-content">Titles rated 18+ and below are available to watch.</label>
+            <mat-slide-toggle class="custom-toggle" [(ngModel)]="contentRating">
+            </mat-slide-toggle>
+          </div>
         </div>
+
+        <div class="profile-settings">
+          <div class="input-group">
+            <label class="label-style">Profile PIN</label>
+            <label class="under-label-style-pin">If you desire a 4-digit PIN on the current account.</label>
+            <mat-slide-toggle class="custom-toggle" [(ngModel)]="profilePIN">
+            </mat-slide-toggle>
+          </div>
+        </div>
+
+        <div class="avatar">
+          <img class="avatar-image" src="assets/images/Profile_Avatar.png" alt="Profile Avatar">
+          <button class="edit-avatar-btn" (click)="navigateToSelectAvatar()">
+            <img src="assets/images/Edit_Icon.png" alt="Edit Icon">
+          </button>
+        </div>
+
       </div>
-
-      <h1 class="delete-profile">Delete Profile</h1>
-
-
-
     </div>
+  </div>
 </div>
+
 <app-footer></app-footer>

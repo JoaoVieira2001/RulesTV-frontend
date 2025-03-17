@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-edit-profile',
@@ -13,5 +14,11 @@ export class EditProfileComponent {
   profilePIN: boolean = false;
 
   languages = ["English", "Portuguese", "Spanish", "Italian", "Deutsch"];
+
+  constructor(private router: Router) {}
+
+  navigateToSelectAvatar(){
+    this.router.navigate(['/select-avatar'])
+  }
 
 }

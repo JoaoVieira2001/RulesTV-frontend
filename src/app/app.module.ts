@@ -31,6 +31,8 @@ import {
   CarouselInnerComponent,
   CarouselItemComponent
 } from '@coreui/angular';
+import {ToggleSwitch} from 'primeng/toggleswitch';
+import {MatSlideToggle} from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
@@ -66,7 +68,9 @@ import {
     CarouselInnerComponent,
     CarouselItemComponent,
     CarouselCaptionComponent,
-    CarouselControlComponent
+    CarouselControlComponent,
+    ToggleSwitch,
+    MatSlideToggle
   ],
   providers: [
     provideClientHydration(withEventReplay())
