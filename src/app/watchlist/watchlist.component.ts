@@ -80,9 +80,9 @@ export class WatchlistComponent {
   }
 
   private logImageCounts(): void {
-    console.log('Series images count:', this.seriesImages.length);
-    console.log('Movies images count:', this.moviesImages.length);
-    console.log('AllCategories images count:', this.allCategoriesImages.length);
+    // console.log('Series images count:', this.seriesImages.length);
+    // console.log('Movies images count:', this.moviesImages.length);
+    // console.log('AllCategories images count:', this.allCategoriesImages.length);
   }
 
 }

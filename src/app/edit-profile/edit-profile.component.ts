@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router} from '@angular/router';
 
 @Component({
@@ -7,11 +7,12 @@ import { Router} from '@angular/router';
   templateUrl: './edit-profile.component.html',
   styleUrl: './edit-profile.component.css'
 })
-export class EditProfileComponent {
+export class EditProfileComponent implements OnInit{
   profileName: string = '';
   selectedLanguage: string = 'English';
   contentRating: boolean = false;
   profilePIN: boolean = false;
+  userAvatar: string = 'assets/images/avatars/Avatar1.png';
 
   languages = ["English", "Portuguese", "Spanish", "Italian", "Deutsch"];
 
@@ -19,6 +20,13 @@ export class EditProfileComponent {
 
   navigateToSelectAvatar(){
     this.router.navigate(['/select-avatar'])
+  }
+
+  ngOnInit(){
+    const storedAvatar = localStorage.getItem('selectedAvatar');
+    if(storedAvatar){
+      this.userAvatar = storedAvatar;
+    }
   }
 
 }
