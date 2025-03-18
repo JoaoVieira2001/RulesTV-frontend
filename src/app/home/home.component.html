@@ -26,7 +26,7 @@
       <h2 class="section-title">Recommended Movies</h2>
       <div class="swiper-container" #swiperContainer>
         <div class="swiper-wrapper">
-          <div class="swiper-slide" *ngFor="let movie of movies" (click)="navigateToFAQ()">
+          <div class="swiper-slide" *ngFor="let movie of movies" (click)="navigateToBrowsePage(movie.id)">
             <img class="movie-image" [src]="movie.src" [alt]="movie.title"/>
           </div>
         </div>
@@ -40,7 +40,7 @@
       <h2 class="section-title">Animated Movies</h2>
       <div class="swiper-container" #swiperContainer2>
         <div class="swiper-wrapper">
-          <div class="swiper-slide" *ngFor="let movie of movies" (click)="navigateToFAQ()">
+          <div class="swiper-slide" *ngFor="let movie of movies">
             <img class="movie-image" [src]="movie.src" [alt]="movie.title"/>
           </div>
         </div>
@@ -54,7 +54,7 @@
       <h2 class="section-title">Pixar Movies</h2>
       <div class="swiper-container" #swiperContainer3>
         <div class="swiper-wrapper">
-          <div class="swiper-slide" *ngFor="let movie of movies" (click)="navigateToFAQ()">
+          <div class="swiper-slide" *ngFor="let movie of movies">
             <img class="movie-image" [src]="movie.src" [alt]="movie.title"/>
           </div>
         </div>

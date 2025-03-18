@@ -1,0 +1,54 @@
+<app-navbar></app-navbar>
+
+<div class="browse-container" *ngIf="pageData">
+  <div class="banner-container">
+    <img class="banner-image" [src]="pageData.image" alt="{{ pageData.title }}">
+    <div class="overlay">
+      <img class="logo" src="assets/images/Logo_2.png" alt="">
+      <h1 class="title">{{ pageData.title }}</h1>
+      <p class="description">{{ pageData.description }}</p>
+      <div class="metadata">
+        <span class="age-btn">14+</span>
+        <span class="resolution-btn">HD</span>
+        <span class="subtitle-btn">CC</span>
+        <span class="imdb-btn">★9.2/10</span>
+        <span class="category-btn">Adventure</span>
+      </div>
+      <div class="buttons">
+        <button class="play-button">▶ PLAY</button>
+        <button class="restart-btn">⟲ RESTART</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="episodes-container">
+    <div class="episodes-header">
+      <h2 [class.active]="selectedTab === 'episodes'" (click)="selectTab('episodes')">EPISODES</h2>
+      <h2 [class.active]="selectedTab === 'details'" (click)="selectTab('details')">DETAILS</h2>
+      <h2 [class.active]="selectedTab === 'recommended'" (click)="selectTab('recommended')">RECOMMENDED</h2>
+    </div>
+
+    <div class="episodes-grid" *ngIf="selectedTab === 'episodes'">
+      <div class="episodes-card" *ngFor="let episode of pageData.episodes">
+        <img [src]="episode.image" alt="">
+        <h3>{{ episode.title }}</h3>
+        <p>{{ episode.description }}</p>
+      </div>
+    </div>
+
+    <div class="details-section" *ngIf="selectedTab === 'details'">
+      <h3>{{ pageData.title }}</h3>
+      <p>{{ pageData.description }}</p>
+    </div>
+
+    <div class="recommended-grid" *ngIf="selectedTab === 'recommended'">
+      <div class="recommended-card" *ngFor="let recommended of recommendedShows">
+        <img [src]="recommended.image" alt="">
+        <h3>{{ recommended.title }}</h3>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<app-footer></app-footer>

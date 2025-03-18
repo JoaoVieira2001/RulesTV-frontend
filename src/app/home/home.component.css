@@ -51,6 +51,7 @@
 .swiper-slide {
   transition: transform 0.3s ease-in-out;
   will-change: transform;
+  cursor: pointer;
 }
 
 .swiper-wrapper {

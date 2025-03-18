@@ -18,24 +18,24 @@ export class HomeComponent implements AfterViewInit{
   ];
 
   movies = [
-    { src: 'assets/images/DisneyPlus/boba_fett.png', title: 'Auth Page' },
-    { src: 'assets/images/DisneyPlus/A New Hope.png', title: 'Logo 1' },
-    { src: 'assets/images/DisneyPlus/ObiWan.png', title: 'Logo 2' },
-    { src: 'assets/images/DisneyPlus/The Empire Strikes Back.png', title: 'Profile Avatar' },
-    { src: 'assets/images/DisneyPlus/Mandalorian.png', title: 'Profile Avatar' },
-    { src: 'assets/images/DisneyPlus/Tales Of the Jedi.png', title: 'Profile Avatar' },
-    { src: 'assets/images/DisneyPlus/boba_fett.png', title: 'Auth Page' },
-    { src: 'assets/images/DisneyPlus/A New Hope.png', title: 'Logo 1' },
-    { src: 'assets/images/DisneyPlus/ObiWan.png', title: 'Logo 2' },
-    { src: 'assets/images/DisneyPlus/The Empire Strikes Back.png', title: 'Profile Avatar' },
-    { src: 'assets/images/DisneyPlus/Mandalorian.png', title: 'Profile Avatar' },
-    { src: 'assets/images/DisneyPlus/Tales Of the Jedi.png', title: 'Profile Avatar' },
+    { id: 1,src: 'assets/images/DisneyPlus/Tales Of the Jedi.png', title: 'Profile Avatar' },
+    { id: 2,src: 'assets/images/DisneyPlus/ObiWan.png', title: 'Logo 2' },
+    { id: 3, src: 'assets/images/DisneyPlus/boba_fett.png', title: 'Auth Page' },
+    { id: 4,src: 'assets/images/DisneyPlus/A New Hope.png', title: 'Logo 1' },
+    { id: 5,src: 'assets/images/DisneyPlus/The Empire Strikes Back.png', title: 'Profile Avatar' },
+    { id: 6,src: 'assets/images/DisneyPlus/Mandalorian.png', title: 'Profile Avatar' },
+    { id: 7,src: 'assets/images/DisneyPlus/boba_fett.png', title: 'Auth Page' },
+    { id: 8,src: 'assets/images/DisneyPlus/A New Hope.png', title: 'Logo 1' },
+    { id: 9,src: 'assets/images/DisneyPlus/ObiWan.png', title: 'Logo 2' },
+    { id: 10,src: 'assets/images/DisneyPlus/The Empire Strikes Back.png', title: 'Profile Avatar' },
+    { id: 11,src: 'assets/images/DisneyPlus/Mandalorian.png', title: 'Profile Avatar' },
+    { id: 12,src: 'assets/images/DisneyPlus/Tales Of the Jedi.png', title: 'Profile Avatar' },
   ];
 
   constructor(private router: Router) {}
 
-  navigateToFAQ(): void {
-    this.router.navigate(['/faq']); // Navigate to FAQ page
+  navigateToBrowsePage(movieId:number): void {
+    this.router.navigate([`/browse/${movieId}`]);
   }
 
   @ViewChild('swiperContainer', { static: false }) swiperContainer!: ElementRef;

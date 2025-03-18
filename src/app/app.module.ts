@@ -33,6 +33,7 @@ import {
 } from '@coreui/angular';
 import {ToggleSwitch} from 'primeng/toggleswitch';
 import {MatSlideToggle} from '@angular/material/slide-toggle';
+import { BrowseComponent } from './browse/browse.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import {MatSlideToggle} from '@angular/material/slide-toggle';
     ButtonComponent,
     NavbarComponent,
     FooterComponent,
-    ForgotPasswordVerifyComponent
+    ForgotPasswordVerifyComponent,
+    BrowseComponent
   ],
   imports: [
     BrowserModule,

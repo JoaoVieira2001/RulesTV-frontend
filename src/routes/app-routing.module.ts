@@ -16,11 +16,13 @@ import {SelectProfileComponent} from '../app/select-profile/select-profile.compo
 import {SignUpComponent} from '../app/sign-up/sign-up.component';
 import {SignInComponent} from '../app/sign-in/sign-in.component';
 import {ForgotPasswordVerifyComponent} from '../app/forgot-password-verify/forgot-password-verify.component';
+import {BrowseComponent} from '../app/browse/browse.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'watchlist', component: WatchlistComponent },
+  { path: 'browse/:id', component: BrowseComponent },
   { path: 'series', component: SeriesComponent },
   { path: 'movies', component: MoviesComponent },
   { path: 'edit-profile', component: EditProfileComponent },
