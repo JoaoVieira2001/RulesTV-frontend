@@ -21,8 +21,8 @@
     </div>
   </div>
 
-  <div class="episodes-container">
-    <div class="episodes-header">
+  <div class="options-container">
+    <div class="options-header">
       <h2 [class.active]="selectedTab === 'episodes'" (click)="selectTab('episodes')">EPISODES</h2>
       <h2 [class.active]="selectedTab === 'details'" (click)="selectTab('details')">DETAILS</h2>
       <h2 [class.active]="selectedTab === 'recommended'" (click)="selectTab('recommended')">RECOMMENDED</h2>
@@ -38,13 +38,22 @@
 
     <div class="details-section" *ngIf="selectedTab === 'details'">
       <h3>{{ pageData.title }}</h3>
-      <p>{{ pageData.description }}</p>
+      <p class="details-description">{{ pageData.details }}</p>
+      <div class="details-grid">
+        <p><strong>Release Date:</strong> {{ pageData.releaseDate }}</p>
+        <p><strong>Genre:</strong> {{ pageData.genre }}</p>
+        <p><strong>Rating:</strong> <span class="rating-btn">{{ pageData.rating }}</span></p>
+        <p><strong>Creator:</strong> {{ pageData.creator }}</p>
+        <p><strong>Starring:</strong> {{ pageData.starring }}</p>
+      </div>
+
     </div>
 
-    <div class="recommended-grid" *ngIf="selectedTab === 'recommended'">
-      <div class="recommended-card" *ngFor="let recommended of recommendedShows">
-        <img [src]="recommended.image" alt="">
-        <h3>{{ recommended.title }}</h3>
+    <div class="recommended-grid-container" *ngIf="selectedTab === 'recommended'">
+      <div class="recommended-grid">
+        <div class="recommended-card" *ngFor="let recommendedSerie of recommendedSeries">
+          <img class="recommended-image" [src]="recommendedSerie.image" alt="">
+        </div>
       </div>
     </div>
 
