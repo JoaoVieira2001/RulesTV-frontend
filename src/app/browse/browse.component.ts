@@ -47,72 +47,24 @@ export class BrowseComponent implements OnInit{
         {
           seasonNumber: 2,
           episodes: [
-            {
-              title: '1. Life and Death',
-              image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode1.png',
-              description: 'Captain Rex and the Bad Batch must infiltrate an enemy base on Anaxes.'
-            },
-            {
-              title: '2. Justice',
-              image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode1.png',
-              description: 'A Jedi investigation uncovers dark secrets.'
-            },
-            {
-              title: '3. Choices',
-              image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode1.png',
-              description: 'A Jedi must make a difficult decision that could change everything.'
-            },
-            {
-              title: '4. The Sith Lord',
-              image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode1.png',
-              description: 'Dooku struggles with his beliefs and faces a turning point.'
-            },
-            {
-              title: '5. Practice Makes Perfect',
-              image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode1.png',
-              description: 'Ashoka Tano undergoes intense training under Anakin Skywalker.'
-            },
-            {
-              title: '6. Resolve',
-              image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode1.png',
-              description: 'Ashoka must navigate the galaxy in the aftermath of Order 66.'
-            }
+            { title: '1. Life and Death', image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode1.png', description: 'Captain Rex and the Bad Batch must infiltrate an enemy base on Anaxes.'},
+            { title: '2. Justice', image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode1.png', description: 'A Jedi investigation uncovers dark secrets.'},
+            { title: '3. Choices', image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode1.png', description: 'A Jedi must make a difficult decision that could change everything.'},
+            { title: '4. The Sith Lord', image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode1.png', description: 'Dooku struggles with his beliefs and faces a turning point.'},
+            { title: '5. Practice Makes Perfect', image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode1.png', description: 'Ashoka Tano undergoes intense training under Anakin Skywalker.'},
+            { title: '6. Resolve', image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode1.png', description: 'Ashoka must navigate the galaxy in the aftermath of Order 66.'}
           ]
         },
 
         {
           seasonNumber: 3,
           episodes: [
-            {
-              title: '1. Life and Death',
-              image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode1.png',
-              description: 'Captain Rex and the Bad Batch must infiltrate an enemy base on Anaxes.'
-            },
-            {
-              title: '2. Justice',
-              image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode1.png',
-              description: 'A Jedi investigation uncovers dark secrets.'
-            },
-            {
-              title: '3. Choices',
-              image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode1.png',
-              description: 'A Jedi must make a difficult decision that could change everything.'
-            },
-            {
-              title: '4. The Sith Lord',
-              image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode1.png',
-              description: 'Dooku struggles with his beliefs and faces a turning point.'
-            },
-            {
-              title: '5. Practice Makes Perfect',
-              image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode1.png',
-              description: 'Ashoka Tano undergoes intense training under Anakin Skywalker.'
-            },
-            {
-              title: '6. Resolve',
-              image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode1.png',
-              description: 'Ashoka must navigate the galaxy in the aftermath of Order 66.'
-            }
+            { title: '1. Life and Death', image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode1.png', description: 'Captain Rex and the Bad Batch must infiltrate an enemy base on Anaxes.'},
+            { title: '2. Justice', image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode1.png', description: 'A Jedi investigation uncovers dark secrets.'},
+            { title: '3. Choices', image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode1.png', description: 'A Jedi must make a difficult decision that could change everything.'},
+            { title: '4. The Sith Lord', image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode1.png', description: 'Dooku struggles with his beliefs and faces a turning point.'},
+            { title: '5. Practice Makes Perfect', image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode1.png', description: 'Ashoka Tano undergoes intense training under Anakin Skywalker.'},
+            { title: '6. Resolve', image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode1.png', description: 'Ashoka must navigate the galaxy in the aftermath of Order 66.'}
           ]
         },
 
@@ -172,14 +124,27 @@ export class BrowseComponent implements OnInit{
       title: 'Star Wars: The Book of Boba Fett',
       image: 'assets/images/BrowseImages/BobaFett.png',
       description: 'A story set in the Star Wars universe...',
-      episodes: [
-        { title: '1. Stranger in a Strange Land', image: 'assets/images/Series_Episodes/BobaFett/Episode1.png', description: 'Boba Fett holds court.' },
-        { title: '2. The Tribes of Tatooine', image: 'assets/images/Series_Episodes/BobaFett/Episode2.png', description: 'Boba Fett faces new challengers on Tatooine.' },
-        { title: '3. The Streets of Mos Espa', image: 'assets/images/Series_Episodes/BobaFett/Episode3.png', description: 'Boba Fett must deal with two very different threats..' },
-        { title: '4. The Gathering Storm', image: 'assets/images/Series_Episodes/BobaFett/Episode4.png', description: 'Boba Fett partners with Fennec Shand.' },
-        { title: '5. Return of the Mandalorian', image: 'assets/images/Series_Episodes/BobaFett/Episode5.png', description: 'An unexcepted ally emerges.' },
-        { title: '6. From the Desert comes a Stranger', image: 'assets/images/Series_Episodes/BobaFett/Episode6.png', description: 'Mysteries are explored and Boba Fett learns new information.' },
-        { title: '7. In the name of Honor', image: 'assets/images/Series_Episodes/BobaFett/Episode7.png', description: 'Boba Fett and Fennec Shand face an escalating conflit.' },
+      details: 'During the reign of the empire, Obi-Wan Kenobi embarks on a crucial mission.' +
+        'There are certain scenes in this fictional series that some viewers find upsetting.' +
+        'Some flashing lights sequences or patterns may affect photosensitive viewers.',
+      releaseDate: '2021',
+      genre: 'Action, Adventure, Science Fiction',
+      rating: '12+',
+      creator: 'Jon Favreau',
+      starring: 'Temuera Morrison, Ming-Na Wen',
+      seasons: [
+        {
+          seasonNumber: 1,
+          episodes: [
+            { title: '1. Stranger in a Strange Land', image: 'assets/images/Series_Episodes/BobaFett/Episode1.png', description: 'Boba Fett holds court.' },
+            { title: '2. The Tribes of Tatooine', image: 'assets/images/Series_Episodes/BobaFett/Episode2.png', description: 'Boba Fett faces new challengers on Tatooine.' },
+            { title: '3. The Streets of Mos Espa', image: 'assets/images/Series_Episodes/BobaFett/Episode3.png', description: 'Boba Fett must deal with two very different threats..' },
+            { title: '4. The Gathering Storm', image: 'assets/images/Series_Episodes/BobaFett/Episode4.png', description: 'Boba Fett partners with Fennec Shand.' },
+            { title: '5. Return of the Mandalorian', image: 'assets/images/Series_Episodes/BobaFett/Episode5.png', description: 'An unexcepted ally emerges.' },
+            { title: '6. From the Desert comes a Stranger', image: 'assets/images/Series_Episodes/BobaFett/Episode6.png', description: 'Mysteries are explored and Boba Fett learns new information.' },
+            { title: '7. In the name of Honor', image: 'assets/images/Series_Episodes/BobaFett/Episode7.png', description: 'Boba Fett and Fennec Shand face an escalating conflit.' },
+          ]
+        },
       ]
     },
     4: {

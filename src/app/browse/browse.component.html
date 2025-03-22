@@ -59,6 +59,9 @@
         <p><strong>Rating:</strong> <span class="rating-btn">{{ pageData.rating }}</span></p>
         <p><strong>Creator:</strong> {{ pageData.creator }}</p>
         <p><strong>Starring:</strong> {{ pageData.starring }}</p>
+        <p *ngIf="!pageData.seasons || pageData.seasons.length === 0">
+          <strong>Duration:</strong> {{ pageData.duration }}
+        </p>
       </div>
     </div>
 
