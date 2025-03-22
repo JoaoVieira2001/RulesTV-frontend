@@ -23,7 +23,7 @@
 
   <div class="options-container">
     <div class="options-header">
-      <h2 [class.active]="selectedTab === 'episodes'" (click)="selectTab('episodes')">EPISODES</h2>
+      <h2 [class.active]="selectedTab === 'episodes'" *ngIf="pageData.episodes?.length > 0" (click)="selectTab('episodes') ">EPISODES</h2>
       <h2 [class.active]="selectedTab === 'details'" (click)="selectTab('details')">DETAILS</h2>
       <h2 [class.active]="selectedTab === 'recommended'" (click)="selectTab('recommended')">RECOMMENDED</h2>
     </div>
