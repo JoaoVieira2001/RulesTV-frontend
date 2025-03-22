@@ -161,9 +161,21 @@
   color: #00EDD9;
 }
 
+.episodes-container {
+  height: 140vh;
+  overflow-y: auto;
+  padding: 20px;
+  background: rgba(20, 26, 26, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  border: 1px solid #00EDD9;
+  scrollbar-width: none;
+}
+
+
 .episodes-grid {
   display: grid;
-  grid-template-columns: repeat(2,1fr);
+  grid-template-columns: repeat(3,1fr);
   gap:20px;
 }
 

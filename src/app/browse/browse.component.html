@@ -28,11 +28,13 @@
       <h2 [class.active]="selectedTab === 'recommended'" (click)="selectTab('recommended')">RECOMMENDED</h2>
     </div>
 
-    <div class="episodes-grid" *ngIf="selectedTab === 'episodes'">
-      <div class="episodes-card" *ngFor="let episode of pageData.episodes">
-        <img [src]="episode.image" alt="">
-        <h3>{{ episode.title }}</h3>
-        <p>{{ episode.description }}</p>
+    <div class="episodes-container" *ngIf="selectedTab === 'episodes'">
+      <div class="episodes-grid">
+        <div class="episodes-card" *ngFor="let episode of pageData.episodes">
+          <img [src]="episode.image" alt="">
+          <h3>{{ episode.title }}</h3>
+          <p>{{ episode.description }}</p>
+        </div>
       </div>
     </div>
 
