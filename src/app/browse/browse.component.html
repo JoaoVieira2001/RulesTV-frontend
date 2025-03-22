@@ -23,14 +23,26 @@
 
   <div class="options-container">
     <div class="options-header">
-      <h2 [class.active]="selectedTab === 'episodes'" *ngIf="pageData.episodes?.length > 0" (click)="selectTab('episodes') ">EPISODES</h2>
+      <h2 [class.active]="selectedTab === 'episodes'" *ngIf="pageData.seasons?.length > 0" (click)="selectTab('episodes')">EPISODES</h2>
       <h2 [class.active]="selectedTab === 'details'" (click)="selectTab('details')">DETAILS</h2>
       <h2 [class.active]="selectedTab === 'recommended'" (click)="selectTab('recommended')">RECOMMENDED</h2>
+
+      <div class="season-container" *ngIf="pageData.seasons?.length > 0 && selectedTab === 'episodes'">
+        <button class="season-button" (mouseenter)="toggleDropdown()" (mouseleave)="toggleDropdown()">
+          Season {{selectedSeason || 1}}
+        </button>
+
+        <div class="season-dropdown" [class.show]="dropdownOpen" (mouseenter)="toggleDropdown()" (mouseleave)="toggleDropdown()">
+          <button *ngFor="let season of pagesData[this.browseId]?.seasons" (click)="selectedSeason = season.seasonNumber">
+            Season {{season.seasonNumber}}
+          </button>
+        </div>
+      </div>
     </div>
 
-    <div class="episodes-container" *ngIf="selectedTab === 'episodes'">
+    <div class="episodes-container" *ngIf="selectedTab === 'episodes' && pageData.seasons?.length > 0">
       <div class="episodes-grid">
-        <div class="episodes-card" *ngFor="let episode of pageData.episodes">
+        <div class="episodes-card" *ngFor="let episode of selectedSeason ? getEpisodesForSeason(selectedSeason) : []">
           <img [src]="episode.image" alt="">
           <h3>{{ episode.title }}</h3>
           <p>{{ episode.description }}</p>
@@ -48,17 +60,15 @@
         <p><strong>Creator:</strong> {{ pageData.creator }}</p>
         <p><strong>Starring:</strong> {{ pageData.starring }}</p>
       </div>
-
     </div>
 
     <div class="recommended-grid-container" *ngIf="selectedTab === 'recommended'">
       <div class="recommended-grid">
         <div class="recommended-card" *ngFor="let recommendedSerie of recommendedSeries">
-          <img class="recommended-image" [src]="recommendedSerie.image" alt="">
+          <img class="recommended-image" [src]="recommendedSerie.image" alt="{{ recommendedSerie.title }}">
         </div>
       </div>
     </div>
-
   </div>
 </div>
 

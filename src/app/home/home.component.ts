@@ -36,6 +36,7 @@ export class HomeComponent implements AfterViewInit{
 
   navigateToBrowsePage(movieId:number): void {
     this.router.navigate([`/browse/${movieId}`]);
+    localStorage.setItem("MovieID", movieId.toString());
   }
 
   @ViewChild('swiperContainer', { static: false }) swiperContainer!: ElementRef;

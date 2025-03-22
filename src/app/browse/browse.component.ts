@@ -11,6 +11,8 @@ export class BrowseComponent implements OnInit{
     browseId: number = 0;
     pageData: any;
     selectedTab: string = 'episodes';
+    selectedSeason: number | null = null;
+    dropdownOpen: boolean = false;
 
   constructor(private route: ActivatedRoute) {
   }
@@ -20,44 +22,98 @@ export class BrowseComponent implements OnInit{
       title: 'Star Wars: Tales of the Jedi',
       image: 'assets/images/BrowseImages/talesOfTheJedi.png',
       details: 'A 6 episode event featuring parables built around Jedi from the prequel era. Journey into the lives' +
-        'of two distincly different Jedi -- Ashoka Tano and Count Dooku. Each will be put to the test as they make choices ' +
-        'that will define their destinies.' + '\n' + 'Some flashing lights sequences or patterns may affect photosensitive viewers.' ,
-      description: 'A child goes throught a rite of passage with unexpected results',
+        ' of two distinctly different Jedi -- Ashoka Tano and Count Dooku. Each will be put to the test as they make choices ' +
+        ' that will define their destinies.' +
+        '\nSome flashing lights sequences or patterns may affect photosensitive viewers.',
+      description: 'A child goes through a rite of passage with unexpected results.',
       releaseDate: '2022',
       genre: 'Action, Anthology, Animation, Science Fiction',
       rating: '6+',
       creator: 'Dave Filoni',
       starring: 'Ashley Eckstein, Corey Burton',
-      episodes: [
+      seasons: [
         {
-          title: '1. Life and Death',
-          image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode1.png',
-          description: 'Captain Rex and the Bad Batch must infiltrate an enemy base on Anaxes.'
+          seasonNumber: 1,
+          episodes: [
+            { title: '1. Life and Death', image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode1.png', description: 'Captain Rex and the Bad Batch must infiltrate an enemy base on Anaxes.'},
+            { title: '2. Justice', image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode2.png', description: 'A Jedi investigation uncovers dark secrets.'},
+            { title: '3. Choices', image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode3.png', description: 'A Jedi must make a difficult decision that could change everything.'},
+            { title: '4. The Sith Lord', image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode4.png', description: 'Dooku struggles with his beliefs and faces a turning point.'},
+            { title: '5. Practice Makes Perfect', image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode5.png', description: 'Ashoka Tano undergoes intense training under Anakin Skywalker.'},
+            { title: '6. Resolve', image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode6.png', description: 'Ashoka must navigate the galaxy in the aftermath of Order 66.'}
+          ]
         },
+
         {
-          title: 'The Bad Batch',
-          image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode2.png',
-          description: 'Captain Rex and the Bad Batch must infiltrate an enemy base on Anaxes.'
+          seasonNumber: 2,
+          episodes: [
+            {
+              title: '1. Life and Death',
+              image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode1.png',
+              description: 'Captain Rex and the Bad Batch must infiltrate an enemy base on Anaxes.'
+            },
+            {
+              title: '2. Justice',
+              image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode1.png',
+              description: 'A Jedi investigation uncovers dark secrets.'
+            },
+            {
+              title: '3. Choices',
+              image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode1.png',
+              description: 'A Jedi must make a difficult decision that could change everything.'
+            },
+            {
+              title: '4. The Sith Lord',
+              image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode1.png',
+              description: 'Dooku struggles with his beliefs and faces a turning point.'
+            },
+            {
+              title: '5. Practice Makes Perfect',
+              image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode1.png',
+              description: 'Ashoka Tano undergoes intense training under Anakin Skywalker.'
+            },
+            {
+              title: '6. Resolve',
+              image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode1.png',
+              description: 'Ashoka must navigate the galaxy in the aftermath of Order 66.'
+            }
+          ]
         },
+
         {
-          title: 'The Bad Batch',
-          image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode3.png',
-          description: 'Captain Rex and the Bad Batch must infiltrate an enemy base on Anaxes.'
-        },
-        {
-          title: 'The Bad Batch',
-          image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode4.png',
-          description: 'Captain Rex and the Bad Batch must infiltrate an enemy base on Anaxes.'
-        },
-        {
-          title: 'The Bad Batch',
-          image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode5.png',
-          description: 'Captain Rex and the Bad Batch must infiltrate an enemy base on Anaxes.'
-        },
-        {
-          title: 'The Bad Batch',
-          image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode6.png',
-          description: 'Captain Rex and the Bad Batch must infiltrate an enemy base on Anaxes.'
+          seasonNumber: 3,
+          episodes: [
+            {
+              title: '1. Life and Death',
+              image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode1.png',
+              description: 'Captain Rex and the Bad Batch must infiltrate an enemy base on Anaxes.'
+            },
+            {
+              title: '2. Justice',
+              image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode1.png',
+              description: 'A Jedi investigation uncovers dark secrets.'
+            },
+            {
+              title: '3. Choices',
+              image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode1.png',
+              description: 'A Jedi must make a difficult decision that could change everything.'
+            },
+            {
+              title: '4. The Sith Lord',
+              image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode1.png',
+              description: 'Dooku struggles with his beliefs and faces a turning point.'
+            },
+            {
+              title: '5. Practice Makes Perfect',
+              image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode1.png',
+              description: 'Ashoka Tano undergoes intense training under Anakin Skywalker.'
+            },
+            {
+              title: '6. Resolve',
+              image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode1.png',
+              description: 'Ashoka must navigate the galaxy in the aftermath of Order 66.'
+            }
+          ]
         },
 
       ]
@@ -75,37 +131,42 @@ export class BrowseComponent implements OnInit{
       rating: '6+',
       creator: 'Dave Filoni',
       starring: 'Ashley Eckstein, Corey Burton',
-      episodes: [
+      seasons: [
         {
-          title: '1. Part 1',
-          image: 'assets/images/Series_Episodes/ObiWan/Episode1.png',
-          description: 'When agents of the Empire pose a new threat, Obi-Wan Kenobi emerges after years of hiding.'
-        },
-        { title: '2. Part 2',
-          image: 'assets/images/Series_Episodes/ObiWan/Episode2.png',
-          description: 'On a dangerous crime-ridden world, Obi-Wan becomes a target.'
-        },
-        {
-          title: '3. Part 3',
-          image: 'assets/images/Series_Episodes/ObiWan/Episode3.png',
-          description: 'Obi-Wan searches for allies.'
+        seasonNumber: 1,
+        episodes: [
+          { title: '1. Part 1', image: 'assets/images/Series_Episodes/ObiWan/Episode1.png', description: 'When agents of the Empire pose a new threat, Obi-Wan Kenobi emerges after years of hiding.'},
+          { title: '2. Part 2', image: 'assets/images/Series_Episodes/ObiWan/Episode2.png', description: 'On a dangerous crime-ridden world, Obi-Wan becomes a target.'},
+          { title: '3. Part 3', image: 'assets/images/Series_Episodes/ObiWan/Episode3.png', description: 'Obi-Wan searches for allies.'},
+          { title: '4. Part 4', image: 'assets/images/Series_Episodes/ObiWan/Episode4.png', description: 'Obi-Wan plotes a mission.'},
+          { title: '5. Part 5', image: 'assets/images/Series_Episodes/ObiWan/Episode5.png', description: 'Imperial forces attempt to draw Obi-Wan out'},
+          { title: '6. Part 6', image: 'assets/images/Series_Episodes/ObiWan/Episode6.png', description: 'The action-packed special event finale.'}
+          ]
         },
         {
-          title: '4. Part 4',
-          image: 'assets/images/Series_Episodes/ObiWan/Episode4.png',
-          description: 'Obi-Wan plotes a mission.'
+          seasonNumber: 2,
+          episodes: [
+            { title: '1. Part 1', image: 'assets/images/Series_Episodes/ObiWan/Episode1.png', description: 'When agents of the Empire pose a new threat, Obi-Wan Kenobi emerges after years of hiding.'},
+            { title: '2. Part 2', image: 'assets/images/Series_Episodes/ObiWan/Episode1.png', description: 'On a dangerous crime-ridden world, Obi-Wan becomes a target.'},
+            { title: '3. Part 3', image: 'assets/images/Series_Episodes/ObiWan/Episode1.png', description: 'Obi-Wan searches for allies.'},
+            { title: '4. Part 4', image: 'assets/images/Series_Episodes/ObiWan/Episode1.png', description: 'Obi-Wan plotes a mission.'},
+            { title: '5. Part 5', image: 'assets/images/Series_Episodes/ObiWan/Episode1.png', description: 'Imperial forces attempt to draw Obi-Wan out'},
+            { title: '6. Part 6', image: 'assets/images/Series_Episodes/ObiWan/Episode1.png', description: 'The action-packed special event finale.'}
+          ]
         },
         {
-          title: '5. Part 5',
-          image: 'assets/images/Series_Episodes/ObiWan/Episode5.png',
-          description: 'Imperial forces attempt to draw Obi-Wan out'
+          seasonNumber: 3,
+          episodes: [
+            { title: '1. Part 1', image: 'assets/images/Series_Episodes/ObiWan/Episode1.png', description: 'When agents of the Empire pose a new threat, Obi-Wan Kenobi emerges after years of hiding.'},
+            { title: '2. Part 2', image: 'assets/images/Series_Episodes/ObiWan/Episode1.png', description: 'On a dangerous crime-ridden world, Obi-Wan becomes a target.'},
+            { title: '3. Part 3', image: 'assets/images/Series_Episodes/ObiWan/Episode1.png', description: 'Obi-Wan searches for allies.'},
+            { title: '4. Part 4', image: 'assets/images/Series_Episodes/ObiWan/Episode1.png', description: 'Obi-Wan plotes a mission.'},
+            { title: '5. Part 5', image: 'assets/images/Series_Episodes/ObiWan/Episode1.png', description: 'Imperial forces attempt to draw Obi-Wan out'},
+            { title: '6. Part 6', image: 'assets/images/Series_Episodes/ObiWan/Episode1.png', description: 'The action-packed special event finale.'}
+          ]
         },
-        {
-          title: '6. Part 6',
-          image: 'assets/images/Series_Episodes/ObiWan/Episode6.png',
-          description: 'The action-packed special event finale.'
-        }
-      ]
+    ]
+
     },
     3: {
       title: 'Star Wars: The Book of Boba Fett',
@@ -156,15 +217,48 @@ export class BrowseComponent implements OnInit{
       rating: '14+',
       creator: 'John Favreau',
       starring: 'Pedro Pascal, Katee Sackhoff, Carl Weathers',
-      episodes: [
-        { title: '1. The Mandalorian', image: 'assets/images/Series_Episodes/TheMandalorian/Episode1.png', description: 'A Mandalorian bounty hunter tracks a target for a well-paying, mysterious client.' },
-        { title: '2. The Child', image: 'assets/images/Series_Episodes/TheMandalorian/Episode2.png', description: 'Having tracked down a valuable quarry, the Mandalorian must now contend with thieving.' },
-        { title: '3. The Sin', image: 'assets/images/Series_Episodes/TheMandalorian/Episode3.png', description: 'The battered Mandalorian returns to his client for reward, but some deals don`t end neatly' },
-        { title: '4. Sanctuary', image: 'assets/images/Series_Episodes/TheMandalorian/Episode4.png', description: 'The Mandalorian teams up with an ex-soldier to protect a farming village from raiders.' },
-        { title: '5. The Gunslinger', image: 'assets/images/Series_Episodes/TheMandalorian/Episode5.png', description: 'On a familiar desert planet, the Mandalorian helps a rookie bounty hunter who is in over his head.' },
-        { title: '6. The Prisoner', image: 'assets/images/Series_Episodes/TheMandalorian/Episode6.png', description: 'The Mandalorian is part of a crew of mercenaries springing a convict from a prison ship.' },
-        { title: '7. The Reckoning', image: 'assets/images/Series_Episodes/TheMandalorian/Episode7.png', description: 'An old contact extends an invitation for the Mandalorian to make peace with the enemies.' },
-        { title: '8. The Redemption', image: 'assets/images/Series_Episodes/TheMandalorian/Episode8.png', description: 'The Mandalorian and his allies come to know their true enemy, who already knows much about them.' },
+      seasons: [
+        {
+          seasonNumber: 1,
+          episodes: [
+            { title: '1. The Mandalorian', image: 'assets/images/Series_Episodes/TheMandalorian/Season1/Episode1.png', description: 'A Mandalorian bounty hunter tracks a target for a well-paying, mysterious client.' },
+            { title: '2. The Child', image: 'assets/images/Series_Episodes/TheMandalorian/Season1/Episode2.png', description: 'Having tracked down a valuable quarry, the Mandalorian must now contend with thieving.' },
+            { title: '3. The Sin', image: 'assets/images/Series_Episodes/TheMandalorian/Season1/Episode3.png', description: 'The battered Mandalorian returns to his client for reward, but some deals don`t end neatly' },
+            { title: '4. Sanctuary', image: 'assets/images/Series_Episodes/TheMandalorian/Season1/Episode4.png', description: 'The Mandalorian teams up with an ex-soldier to protect a farming village from raiders.' },
+            { title: '5. The Gunslinger', image: 'assets/images/Series_Episodes/TheMandalorian/Season1/Episode5.png', description: 'On a familiar desert planet, the Mandalorian helps a rookie bounty hunter who is in over his head.' },
+            { title: '6. The Prisoner', image: 'assets/images/Series_Episodes/TheMandalorian/Season1/Episode6.png', description: 'The Mandalorian is part of a crew of mercenaries springing a convict from a prison ship.' },
+            { title: '7. The Reckoning', image: 'assets/images/Series_Episodes/TheMandalorian/Season1/Episode7.png', description: 'An old contact extends an invitation for the Mandalorian to make peace with the enemies.' },
+            { title: '8. The Redemption', image: 'assets/images/Series_Episodes/TheMandalorian/Season1/Episode8.png', description: 'The Mandalorian and his allies come to know their true enemy, who already knows much about them.' },
+          ]
+        },
+        {
+          seasonNumber: 2,
+          episodes: [
+            { title: '1. The Mandalorian', image: 'assets/images/Series_Episodes/TheMandalorian/Season2/Episode1.png', description: 'A Mandalorian bounty hunter tracks a target for a well-paying, mysterious client.' },
+            { title: '2. The Child', image: 'assets/images/Series_Episodes/TheMandalorian/Season2/Episode2.png', description: 'Having tracked down a valuable quarry, the Mandalorian must now contend with thieving.' },
+            { title: '3. The Sin', image: 'assets/images/Series_Episodes/TheMandalorian/Season2/Episode3.png', description: 'The battered Mandalorian returns to his client for reward, but some deals don`t end neatly' },
+            { title: '4. Sanctuary', image: 'assets/images/Series_Episodes/TheMandalorian/Season2/Episode4.png', description: 'The Mandalorian teams up with an ex-soldier to protect a farming village from raiders.' },
+            { title: '5. The Gunslinger', image: 'assets/images/Series_Episodes/TheMandalorian/Season2/Episode5.png', description: 'On a familiar desert planet, the Mandalorian helps a rookie bounty hunter who is in over his head.' },
+            { title: '6. The Prisoner', image: 'assets/images/Series_Episodes/TheMandalorian/Season2/Episode6.png', description: 'The Mandalorian is part of a crew of mercenaries springing a convict from a prison ship.' },
+            { title: '7. The Reckoning', image: 'assets/images/Series_Episodes/TheMandalorian/Season2/Episode7.png', description: 'An old contact extends an invitation for the Mandalorian to make peace with the enemies.' },
+            { title: '8. The Redemption', image: 'assets/images/Series_Episodes/TheMandalorian/Season2/Episode8.png', description: 'The Mandalorian and his allies come to know their true enemy, who already knows much about them.' },
+          ]
+        },
+        {
+          seasonNumber: 3,
+          episodes: [
+            { title: '1. The Mandalorian', image: 'assets/images/Series_Episodes/TheMandalorian/Season3/Episode1.png', description: 'A Mandalorian bounty hunter tracks a target for a well-paying, mysterious client.' },
+            { title: '2. The Child', image: 'assets/images/Series_Episodes/TheMandalorian/Season3/Episode2.png', description: 'Having tracked down a valuable quarry, the Mandalorian must now contend with thieving.' },
+            { title: '3. The Sin', image: 'assets/images/Series_Episodes/TheMandalorian/Season3/Episode3.png', description: 'The battered Mandalorian returns to his client for reward, but some deals don`t end neatly' },
+            { title: '4. Sanctuary', image: 'assets/images/Series_Episodes/TheMandalorian/Season3/Episode4.png', description: 'The Mandalorian teams up with an ex-soldier to protect a farming village from raiders.' },
+            { title: '5. The Gunslinger', image: 'assets/images/Series_Episodes/TheMandalorian/Season3/Episode5.png', description: 'On a familiar desert planet, the Mandalorian helps a rookie bounty hunter who is in over his head.' },
+            { title: '6. The Prisoner', image: 'assets/images/Series_Episodes/TheMandalorian/Season3/Episode6.png', description: 'The Mandalorian is part of a crew of mercenaries springing a convict from a prison ship.' },
+            { title: '7. The Reckoning', image: 'assets/images/Series_Episodes/TheMandalorian/Season3/Episode7.png', description: 'An old contact extends an invitation for the Mandalorian to make peace with the enemies.' },
+            { title: '8. The Redemption', image: 'assets/images/Series_Episodes/TheMandalorian/Season3/Episode8.png', description: 'The Mandalorian and his allies come to know their true enemy, who already knows much about them.' },
+          ]
+        },
+
+
       ]
     },
   }
@@ -200,12 +294,35 @@ export class BrowseComponent implements OnInit{
     this.selectedTab = tab;
   }
 
+  selectSeason(seasonNumber: number) {
+    this.selectedSeason = seasonNumber;
+    this.dropdownOpen = false;
+    this.selectedTab = 'episodes';
+  }
+
+  toggleDropdown() {
+    this.dropdownOpen = !this.dropdownOpen;
+  }
+
+  getEpisodesForSeason(seasonNumber: number) {
+    const season = this.pageData?.seasons?.find((s: { seasonNumber: number, episodes: any[] }) => s.seasonNumber === seasonNumber);
+    return season ? season.episodes : [];
+  }
+
 
   ngOnInit() {
-      this.route.paramMap.subscribe(params => {
-        this.browseId = Number(params.get('id'));
-        this.pageData = this.pagesData[this.browseId] || null;
-        this.selectedTab = this.pageData?.episodes ? 'episodes' : 'details';
-      });
+    this.route.paramMap.subscribe(params => {
+
+      this.browseId = Number(params.get('id'));
+      this.pageData = this.pagesData[this.browseId] || null;
+
+      if (this.pageData.seasons && this.pageData.seasons.length > 0) {
+        this.selectedTab = 'episodes';
+        this.selectedSeason = 1;
+      } else {
+        this.selectedTab = 'details';
+      }
+
+    });
   }
 }
