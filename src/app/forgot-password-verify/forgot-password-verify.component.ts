@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-forgot-password-verify',
@@ -8,4 +9,9 @@ import { Component } from '@angular/core';
 })
 export class ForgotPasswordVerifyComponent {
 
+  constructor(private router: Router) {}
+
+  navigateToForgotPasswordReplace(){
+    this.router.navigate(['/forgot-password-replace'])
+  }
 }
