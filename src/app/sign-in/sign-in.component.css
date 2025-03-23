@@ -27,6 +27,14 @@
   width: 100%;
 }
 
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
 .links-container {
   display: flex;
   flex-direction: column;
@@ -96,6 +104,12 @@ input::placeholder{
   display: block;
   margin: 10px 0;
   color: white;
+  text-decoration: none;
+}
+
+.forgot-password:hover{
+  color: rgb(10, 88, 202);
+  cursor:pointer;
   text-decoration: none;
 }
 

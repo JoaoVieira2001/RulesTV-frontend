@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
@@ -14,5 +15,11 @@ export class SignInComponent {
   onSubmit() {
     console.log('Email:', this.email);
     console.log('Password:', this.password);
+  }
+
+  constructor(private router: Router) {}
+
+  navigateToForgotPassword() {
+    this.router.navigate(['/forgot-password']);
   }
 }
