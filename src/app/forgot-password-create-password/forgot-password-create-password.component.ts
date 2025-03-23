@@ -7,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrl: './forgot-password-create-password.component.css'
 })
 export class ForgotPasswordCreatePasswordComponent {
-
+  password: string = '';
+  rentered_password: string = '';
 }
