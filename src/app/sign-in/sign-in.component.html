@@ -1,1 +1,29 @@
-<p>sign-in works!</p>
+<div class="sign-in-container">
+  <div class="form-container">
+    <h2 class="sign-in-title">SIGN IN</h2>
+
+    <form (ngSubmit)="onSubmit()">
+      <div class="input-container">
+        <input type="email" placeholder="Email Address" [ngModel]="email" name="email" required>
+        <input type="password" placeholder="Password" [ngModel]="password" name="password" required>
+      </div>
+
+      <div class="button-container">
+        <button class="btn primary-btn" type="submit">SIGN IN</button>
+        <span class="or-word">OR</span>
+        <button class="btn primary-btn" type="button">Use a Sign-In Code</button>
+      </div>
+
+      <div class="links-container">
+        <a class="forgot-password">Forgot Password?</a>
+        <p class="signup-text">
+          You don't have an account on RulesTV?
+          <a href="#">SIGN UP</a>
+        </p>
+      </div>
+    </form>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
+<app-footer></app-footer>

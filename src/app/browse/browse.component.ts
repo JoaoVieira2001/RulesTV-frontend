@@ -43,31 +43,6 @@ export class BrowseComponent implements OnInit{
             { title: '6. Resolve', image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode6.png', description: 'Ashoka must navigate the galaxy in the aftermath of Order 66.'}
           ]
         },
-
-        {
-          seasonNumber: 2,
-          episodes: [
-            { title: '1. Life and Death', image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode1.png', description: 'Captain Rex and the Bad Batch must infiltrate an enemy base on Anaxes.'},
-            { title: '2. Justice', image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode1.png', description: 'A Jedi investigation uncovers dark secrets.'},
-            { title: '3. Choices', image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode1.png', description: 'A Jedi must make a difficult decision that could change everything.'},
-            { title: '4. The Sith Lord', image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode1.png', description: 'Dooku struggles with his beliefs and faces a turning point.'},
-            { title: '5. Practice Makes Perfect', image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode1.png', description: 'Ashoka Tano undergoes intense training under Anakin Skywalker.'},
-            { title: '6. Resolve', image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode1.png', description: 'Ashoka must navigate the galaxy in the aftermath of Order 66.'}
-          ]
-        },
-
-        {
-          seasonNumber: 3,
-          episodes: [
-            { title: '1. Life and Death', image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode1.png', description: 'Captain Rex and the Bad Batch must infiltrate an enemy base on Anaxes.'},
-            { title: '2. Justice', image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode1.png', description: 'A Jedi investigation uncovers dark secrets.'},
-            { title: '3. Choices', image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode1.png', description: 'A Jedi must make a difficult decision that could change everything.'},
-            { title: '4. The Sith Lord', image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode1.png', description: 'Dooku struggles with his beliefs and faces a turning point.'},
-            { title: '5. Practice Makes Perfect', image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode1.png', description: 'Ashoka Tano undergoes intense training under Anakin Skywalker.'},
-            { title: '6. Resolve', image: 'assets/images/Series_Episodes/TalesOfTheJedi/Episode1.png', description: 'Ashoka must navigate the galaxy in the aftermath of Order 66.'}
-          ]
-        },
-
       ]
     },
     2: {
