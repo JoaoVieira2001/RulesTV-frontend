@@ -1,1 +1,27 @@
-<p>sign-up works!</p>
+<div class="sign-up-container">
+  <div class="form-container">
+    <h2 class="sign-up-title">SIGN UP</h2>
+
+    <form (ngSubmit)="onSubmit()">
+      <div class="input-container">
+        <input placeholder="First and Last Name" name="names" required>
+        <input placeholder="Mobile Number" name="mobile_number" required>
+        <input type="email" placeholder="Email" [ngModel]="email" name="email" required>
+        <input type="password" placeholder="Password" [ngModel]="password" name="password" required>
+      </div>
+
+      <div class="button-container">
+        <span class="message">To verify your number, we will send you a text message with a temporary code. Message and data rates may apply.</span>
+        <button class="btn primary-btn" type="button">SIGN UP</button>
+      </div>
+
+      <div class="links-container">
+        <p class="signup-text">
+          Already have a account?
+          <a href="/sign-in">SIGN IN</a>
+        </p>
+      </div>
+    </form>
+  </div>
+</div>
+<app-footer></app-footer>
