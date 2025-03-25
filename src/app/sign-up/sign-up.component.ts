@@ -42,7 +42,6 @@ export class SignUpComponent {
         }
       console.error('Sign-up failed', error);
     }
-
   }
 
 }
