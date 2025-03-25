@@ -115,3 +115,9 @@ input::placeholder{
   font-weight: bold;
   font-size: 24px;
 }
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-bottom: 10px;
+}

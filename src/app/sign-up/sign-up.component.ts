@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {lastValueFrom} from 'rxjs';
 
 @Component({
   selector: 'app-sign-up',
@@ -7,12 +9,40 @@ import { Component } from '@angular/core';
   styleUrl: './sign-up.component.css'
 })
 export class SignUpComponent {
-  email: string = '';
-  password: string = '';
+  user = {
+    name: '',
+    phone_number: '',
+    email: '',
+    password: ''
+  };
 
-  onSubmit() {
-    console.log('Email:', this.email);
-    console.log('Password:', this.password);
+  errorMessage: string = '';
+
+  constructor(private http: HttpClient) {
+  }
+
+  async onSubmit() {
+    console.log("User Info:",this.user)
+    this.errorMessage = '';
+    const signUpUrl = 'http://localhost:8081/api/v1/auth/signup';
+
+    try{
+      const response = await lastValueFrom(this.http.post(signUpUrl,this.user));
+      console.log('Sign-up successful!', response);
+      alert('Account created successfully!');
+    } catch (error:any) {
+        if( error instanceof HttpErrorResponse){
+          if(error.error.includes('Duplicate entry')){
+            this.errorMessage = 'The name, email, or mobile number is already in use.';
+          } else {
+            this.errorMessage = 'Sign-up failed. Please try again.';
+          }
+        } else {
+          this.errorMessage = 'An unexpected error occurred.';
+        }
+      console.error('Sign-up failed', error);
+    }
+
   }
 
 }

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Movie, MovieAPI} from '../../api/movie';
 
 @Component({
   selector: 'app-movies',
@@ -6,8 +7,9 @@ import { Component } from '@angular/core';
   templateUrl: './movies.component.html',
   styleUrl: './movies.component.css'
 })
-export class MoviesComponent {
+export class MoviesComponent implements OnInit{
   categories:string[] = ['Action','Adventure','Comedy','Kids','Music','Science Fiction','Sports'];
+  moviesListAPI: Movie[] = [];
   moviesList = [
     { title: 'Thousand_Blades', image: 'assets/images/DisneyPlus/movies/TheRevenant.png' },
     { title: 'Thousand_Blades', image: 'assets/images/DisneyPlus/movies/WinterSoldier.png' },
@@ -34,4 +36,20 @@ export class MoviesComponent {
     { title: 'Thousand_Blades', image: 'assets/images/DisneyPlus/movies/ThreeBillboards.png' },
     { title: 'Thousand_Blades', image: 'assets/images/DisneyPlus/Paradise.png' },
   ]
+
+  constructor(private movieService: MovieAPI) {}
+
+  ngOnInit(){
+    this.fetchMovies();
+  }
+
+  fetchMovies(){
+    this.movieService.getMovies().subscribe(
+      (movies: Movie[])=> {
+        console.log('Fetched Movies:', movies);
+        this.moviesListAPI = movies;
+      },
+      error => console.error('Error fetching movies:', error)
+    );
+  }
 }

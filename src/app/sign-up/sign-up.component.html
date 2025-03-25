@@ -2,17 +2,26 @@
   <div class="form-container">
     <h2 class="sign-up-title">SIGN UP</h2>
 
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+
     <form (ngSubmit)="onSubmit()">
       <div class="input-container">
-        <input placeholder="First and Last Name" name="names" required>
-        <input placeholder="Mobile Number" name="mobile_number" required>
-        <input type="email" placeholder="Email" [ngModel]="email" name="email" required>
-        <input type="password" placeholder="Password" [ngModel]="password" name="password" required>
+        <input placeholder="First and Last Name" name="names" [(ngModel)]="user.name" required>
+        <input placeholder="Phone Number" name="phone_number" [(ngModel)]="user.phone_number" required>
+        <input type="email" placeholder="Email" [(ngModel)]="user.email" name="email" required>
+        <input type="password" placeholder="Password" [(ngModel)]="user.password" name="password" required>
       </div>
 
       <div class="button-container">
         <span class="message">To verify your number, we will send you a text message with a temporary code. Message and data rates may apply.</span>
-        <button class="btn primary-btn" type="button">SIGN UP</button>
+        <button class="btn primary-btn"
+                type="submit"
+                >
+
+          SIGN UP
+        </button>
       </div>
 
       <div class="links-container">

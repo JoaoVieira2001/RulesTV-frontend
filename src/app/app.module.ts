@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule, provideClientHydration, withEventReplay } from '@angular/platform-browser';
+import { BrowserModule} from '@angular/platform-browser';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppRoutingModule } from '../routes/app-routing.module';
 import { AppComponent } from './app.component';
@@ -34,6 +34,9 @@ import {
 import {ToggleSwitch} from 'primeng/toggleswitch';
 import {MatSlideToggle} from '@angular/material/slide-toggle';
 import { BrowseComponent } from './browse/browse.component';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'; // ✅ Import new HTTP client
+
+
 
 @NgModule({
   declarations: [
@@ -72,11 +75,10 @@ import { BrowseComponent } from './browse/browse.component';
     CarouselCaptionComponent,
     CarouselControlComponent,
     ToggleSwitch,
-    MatSlideToggle
+    MatSlideToggle,
   ],
   providers: [
-    provideClientHydration(withEventReplay())
-
+    provideHttpClient(withInterceptorsFromDi())
   ],
   bootstrap: [AppComponent]
 })
