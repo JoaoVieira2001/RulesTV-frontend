@@ -4,9 +4,9 @@ import { Observable } from 'rxjs';
 import {AuthService} from '../auth/auth.service';
 
 export interface User {
-  id?: number;
+  id: number;
   email: string;
-  name: string;
+  fullName: string;
   password: string;
   role: string;
   profile_picture: string;
@@ -22,6 +22,7 @@ export class userAuthAPI{
   private getAuthToken():HttpHeaders{
     return this.authService.getAuthToken();
   }
+
 
   getAllUsers(): Observable<User[]> {
     if(!this.authService.isAdmin()){
@@ -42,5 +43,12 @@ export class userAuthAPI{
       throw new Error("Unauthorized: Only admins can access this endpoint.");
     }
     return this.http.post<User>(`${this.apiUrl}/promote/${email}`, {}, { headers: this.getAuthToken() });
+  }
+
+  deleteUser(id:number): Observable<User[]> {
+    if(!this.authService.isAdmin()){
+      throw new Error("Unauthorized: Only admins can access this endpoint.");
+    }
+    return this.http.delete<User[]>(`${this.apiUrl}/delete/${id}`, { headers: this.getAuthToken() });
   }
 }

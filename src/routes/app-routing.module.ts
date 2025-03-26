@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {HomeComponent} from '../app/home/home.component';
+import {AdminDashboardComponent} from '../app/admin-dashboard/admin-dashboard.component';
 import {WatchlistComponent} from '../app/watchlist/watchlist.component';
 import {SeriesComponent} from '../app/series/series.component';
 import {MoviesComponent} from '../app/movies/movies.component';
@@ -22,6 +23,7 @@ import {AuthGuard} from '../auth/auth.guard';
 const routes: Routes = [
   { path: '', redirectTo: '/sign-in', pathMatch: 'full' },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'admin-dashboard', component: AdminDashboardComponent, canActivate: [AuthGuard] },
   { path: 'watchlist', component: WatchlistComponent, canActivate: [AuthGuard] },
   { path: 'browse/:id', component: BrowseComponent, canActivate: [AuthGuard] },
   { path: 'series', component: SeriesComponent, canActivate: [AuthGuard] },

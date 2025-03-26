@@ -34,9 +34,8 @@ import {
 import {ToggleSwitch} from 'primeng/toggleswitch';
 import {MatSlideToggle} from '@angular/material/slide-toggle';
 import { BrowseComponent } from './browse/browse.component';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'; // ✅ Import new HTTP client
-
-
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component'; // ✅ Import new HTTP client
 
 @NgModule({
   declarations: [
@@ -60,7 +59,8 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
     NavbarComponent,
     FooterComponent,
     ForgotPasswordVerifyComponent,
-    BrowseComponent
+    BrowseComponent,
+    AdminDashboardComponent
   ],
   imports: [
     BrowserModule,

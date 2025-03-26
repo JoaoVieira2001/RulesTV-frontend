@@ -18,4 +18,8 @@ export class NavbarComponent {
   navigateToHome() {
     this.router.navigate(['/home']);
   }
+
+  isAdmin(){
+    return this.authService.isAdmin();
+  }
 }

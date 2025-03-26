@@ -5,6 +5,9 @@ import {HttpClient} from '@angular/common/http';
 
 interface AuthResponse {
   token: string;
+  email: string;
+  role: string;
+  full_name: string;
 }
 
 @Component({
@@ -32,6 +35,8 @@ export class SignInComponent {
       const response = await lastValueFrom(this.http.post<AuthResponse>(signInUrl, this.userCredentials));
       localStorage.setItem('authToken', response.token);
       localStorage.setItem('user', JSON.stringify(response));
+      console.log("UserDAta:",JSON.stringify(response))
+
       this.router.navigate(['/home']);
     } catch (error: any) {
       if (error.status === 401) {

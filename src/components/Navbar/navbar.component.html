@@ -30,9 +30,10 @@
         <span class="username">João Vieira</span>
         <div class="dropdown">
           <div class="dropdown-content">
-            <a routerLink="/edit-profile">Edit Profile</a>
-            <a routerLink="/faq">FAQ</a>
-            <a (click)="logout()">Log Out</a>
+            <a class="dropdown-btn" routerLink="/edit-profile">Edit Profile</a>
+            <a class="dropdown-btn" routerLink="/faq">FAQ</a>
+            <a class="dropdown-btn" *ngIf="isAdmin()" routerLink="/admin-dashboard">Admin Dashboard</a>
+            <a class="dropdown-btn" (click)="logout()">Log Out</a>
           </div>
         </div>
       </div>
