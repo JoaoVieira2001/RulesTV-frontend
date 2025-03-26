@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import {AuthService} from '../auth/auth.service';
 
-export interface Movie {
+export interface Movies {
   id?: number;
   title: string;
   description: string;
   releaseDate: string;
-  runtime: string;
+  runtime: number;
   durationMinutes: number;
   audio: string;
   subtitle: string;
@@ -18,38 +19,33 @@ export interface Movie {
 }
 
 @Injectable({providedIn: 'root'})
-export class MovieAPI{
+export class MoviesAPI{
   private apiUrl = 'http://localhost:8081/api/v1/movie';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,private authService: AuthService) {}
 
-  private getAuthToken(){
-    const token = localStorage.getItem('token');
-    console.log(token);
-    return new HttpHeaders({
-      Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/json'
-    })
+  private getAuthToken():HttpHeaders{
+    return this.authService.getAuthToken();
   }
 
-  getMovies(): Observable<Movie[]> {
-    return this.http.get<Movie[]>(`${this.apiUrl}/all`, { headers: this.getAuthToken() });
+  getMovies(): Observable<Movies[]> {
+    return this.http.get<Movies[]>(`${this.apiUrl}/all`, { headers: this.getAuthToken() });
   }
 
-  getMovieId(id: number): Observable<Movie> {
-    return this.http.get<Movie>(`${this.apiUrl}/${id}`, { headers: this.getAuthToken() });
+  getMovieId(id: number): Observable<Movies> {
+    return this.http.get<Movies>(`${this.apiUrl}/${id}`, { headers: this.getAuthToken() });
   }
 
-  addMovie(movie: Movie): Observable<Movie> {
-    return this.http.post<Movie>(`${this.apiUrl}/post`, movie, { headers: this.getAuthToken() });
+  addMovie(movie: Movies): Observable<Movies> {
+    return this.http.post<Movies>(`${this.apiUrl}/post`, movie, { headers: this.getAuthToken() });
   }
 
-  updateMovie(id: number, movie: Movie): Observable<Movie> {
-    return this.http.put<Movie>(`${this.apiUrl}/put/${id}`, movie, { headers: this.getAuthToken() });
+  updateMovie(id: number, movie: Movies): Observable<Movies> {
+    return this.http.put<Movies>(`${this.apiUrl}/put/${id}`, movie, { headers: this.getAuthToken() });
   }
 
   deleteMovie(id: number): Observable<any> {
-    return this.http.delete<Movie>(`${this.apiUrl}/delete/${id}`, { headers: this.getAuthToken() });
+    return this.http.delete<Movies>(`${this.apiUrl}/delete/${id}`, { headers: this.getAuthToken() });
   }
 }
 

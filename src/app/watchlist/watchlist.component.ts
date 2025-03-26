@@ -1,4 +1,6 @@
-import {Component, ElementRef, QueryList, ViewChildren} from '@angular/core';
+import {Component, ElementRef, OnInit, QueryList, ViewChildren} from '@angular/core';
+import {Series} from '../../api/series';
+import {Watchlist, WatchlistAPI} from '../../api/watchlist';
 
 @Component({
   selector: 'app-watchlist',
@@ -6,9 +8,10 @@ import {Component, ElementRef, QueryList, ViewChildren} from '@angular/core';
   templateUrl: './watchlist.component.html',
   styleUrl: './watchlist.component.css'
 })
-export class WatchlistComponent {
+export class WatchlistComponent implements OnInit {
   categories:string[] = ['All','Series','Movies'];
   selectedCategory: string = 'All';
+  watchlistListAPI: Watchlist[] = [];
 
   seriesList = [
     { title: 'Thousand_Blades', image: 'assets/images/DisneyPlus/series/A_THousand_Blows.png' },
@@ -64,12 +67,29 @@ export class WatchlistComponent {
     { title: 'Thousand_Blades', image: 'assets/images/DisneyPlus/Paradise.png' },
   ]
 
+  constructor(private watchlistService: WatchlistAPI) {}
+
+  ngOnInit(){
+    this.fetchWatchlist();
+  }
+
+  fetchWatchlist(){
+    this.watchlistService.getWatchlist().subscribe(
+      (watchlist: Watchlist[])=> {
+        console.log('Fetched Watchlist:', watchlist);
+        this.watchlistListAPI = watchlist;
+      },
+      error => console.error('Error fetching movies:', error)
+    );
+  }
+
   filterCategory(category: string): void{
     this.selectedCategory = category;
     console.log('Selected Category:', this.selectedCategory);
     console.log('Selected Category:', this.selectedCategory.length);
     setTimeout(() => this.logImageCounts());
   }
+
 
   @ViewChildren('seriesLenght') seriesImages ! : QueryList<ElementRef>
   @ViewChildren('moviesLenght') moviesImages ! : QueryList<ElementRef>
@@ -80,9 +100,7 @@ export class WatchlistComponent {
   }
 
   private logImageCounts(): void {
-    // console.log('Series images count:', this.seriesImages.length);
-    // console.log('Movies images count:', this.moviesImages.length);
-    // console.log('AllCategories images count:', this.allCategoriesImages.length);
+
   }
 
 }

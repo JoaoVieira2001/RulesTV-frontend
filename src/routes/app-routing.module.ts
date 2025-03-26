@@ -17,7 +17,7 @@ import {SignUpComponent} from '../app/sign-up/sign-up.component';
 import {SignInComponent} from '../app/sign-in/sign-in.component';
 import {ForgotPasswordVerifyComponent} from '../app/forgot-password-verify/forgot-password-verify.component';
 import {BrowseComponent} from '../app/browse/browse.component';
-import {AuthGuard} from '../security/auth.guard';
+import {AuthGuard} from '../auth/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/sign-in', pathMatch: 'full' },

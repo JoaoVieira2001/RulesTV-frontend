@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {Router} from '@angular/router';
 import {lastValueFrom} from 'rxjs';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 
 interface AuthResponse {
   token: string;
@@ -24,29 +24,28 @@ export class SignInComponent {
   constructor(private router: Router,private http:HttpClient) {}
 
   async onSubmit() {
-    console.log("User Info:",this.userCredentials)
+    console.log("User Info:", this.userCredentials);
     this.errorMessage = '';
     const signInUrl = 'http://localhost:8081/api/v1/auth/login';
 
-    try{
-      const response = await lastValueFrom(this.http.post<AuthResponse>(signInUrl,this.userCredentials));
-      localStorage.setItem('authToken',response.token);
+    try {
+      const response = await lastValueFrom(this.http.post<AuthResponse>(signInUrl, this.userCredentials));
+      localStorage.setItem('authToken', response.token);
       localStorage.setItem('user', JSON.stringify(response));
-      this.router.navigate(['/home'])
+      this.router.navigate(['/home']);
     } catch (error: any) {
-      if (error instanceof HttpErrorResponse) {
-        if (error.status === 401) {
-          this.errorMessage = 'Invalid email or password.';
-        } else {
-          this.errorMessage = 'Login failed. Please try again.';
-        }
+      if (error.status === 401) {
+        this.errorMessage = 'Invalid email or password.';
+      } else if (error.status === 400) {
+        this.errorMessage = 'Bad request. Please check your input.';
+      } else if (error.status === 500) {
+        this.errorMessage = 'Server error. Please try again later.';
       } else {
-        this.errorMessage = 'An unexpected error occurred.';
+        this.errorMessage = `Login failed. Error ${error.status}: ${error.message}`;
       }
-      console.error('Login failed', error);
     }
-
   }
+
 
   navigateToForgotPassword() {
     this.router.navigate(['/forgot-password']);

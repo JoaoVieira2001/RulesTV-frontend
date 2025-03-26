@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Series, SeriesAPI} from '../../api/series';
 
 @Component({
   selector: 'app-series',
@@ -6,8 +7,9 @@ import { Component } from '@angular/core';
   templateUrl: './series.component.html',
   styleUrl: './series.component.css'
 })
-export class SeriesComponent {
+export class SeriesComponent implements OnInit{
   categories:string[] = ['Action','Comedy','Adventure','Kids','Music','Science Fiction','Sports'];
+  seriesListAPI: Series[] = [];
   seriesList = [
     { title: 'Thousand_Blades', image: 'assets/images/DisneyPlus/series/A_THousand_Blows.png' },
     { title: 'DAredevil', image: 'assets/images/DisneyPlus/series/DAredevil.png' },
@@ -33,6 +35,21 @@ export class SeriesComponent {
     { title: 'Skeleton_Crew', image: 'assets/images/DisneyPlus/series/Skeleton_Crew.png' },
     { title: 'SpiderMan_FriendlyNieghtbour', image: 'assets/images/DisneyPlus/series/SpiderMan_FriendlyNieghtbour.png' },
     { title: 'WhiskeyOnTheRocks', image: 'assets/images/DisneyPlus/series/WhiskeyOnTheRocks.png' },
-
   ]
+
+  constructor(private seriesService: SeriesAPI) {}
+
+  ngOnInit(){
+    this.fetchSeries();
+  }
+
+  fetchSeries(){
+    this.seriesService.getSeries().subscribe(
+      (series: Series[])=> {
+        console.log('Fetched Series:', series);
+        this.seriesListAPI = series;
+      },
+      error => console.error('Error fetching movies:', error)
+    );
+  }
 }
