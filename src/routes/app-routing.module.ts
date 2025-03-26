@@ -17,24 +17,25 @@ import {SignUpComponent} from '../app/sign-up/sign-up.component';
 import {SignInComponent} from '../app/sign-in/sign-in.component';
 import {ForgotPasswordVerifyComponent} from '../app/forgot-password-verify/forgot-password-verify.component';
 import {BrowseComponent} from '../app/browse/browse.component';
+import {AuthGuard} from '../security/auth.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
-  { path: 'watchlist', component: WatchlistComponent },
-  { path: 'browse/:id', component: BrowseComponent },
-  { path: 'series', component: SeriesComponent },
-  { path: 'movies', component: MoviesComponent },
-  { path: 'edit-profile', component: EditProfileComponent },
-  { path: 'enter-pin', component: EnterPinComponent },
+  { path: '', redirectTo: '/sign-in', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'watchlist', component: WatchlistComponent, canActivate: [AuthGuard] },
+  { path: 'browse/:id', component: BrowseComponent, canActivate: [AuthGuard] },
+  { path: 'series', component: SeriesComponent, canActivate: [AuthGuard] },
+  { path: 'movies', component: MoviesComponent, canActivate: [AuthGuard] },
+  { path: 'edit-profile', component: EditProfileComponent, canActivate: [AuthGuard] },
+  { path: 'enter-pin', component: EnterPinComponent, canActivate: [AuthGuard] },
   { path: 'faq', component: FaqComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'forgot-password-replace', component: ForgotPasswordCreatePasswordComponent },
   { path: 'forgot-password-verify', component: ForgotPasswordVerifyComponent },
   { path: 'forgot-pin', component: ForgotPinComponent },
   { path: 'forgot-pin-replace', component: ForgotPinReplaceComponent },
-  { path: 'select-avatar', component: SelectAvatarComponent },
-  { path: 'select-profile', component: SelectProfileComponent },
+  { path: 'select-avatar', component: SelectAvatarComponent, canActivate: [AuthGuard] },
+  { path: 'select-profile', component: SelectProfileComponent, canActivate: [AuthGuard] },
   { path: 'sign-up', component: SignUpComponent },
   { path: 'sign-in', component: SignInComponent }
 ];

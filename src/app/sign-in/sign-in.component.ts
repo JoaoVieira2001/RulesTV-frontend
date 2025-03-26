@@ -30,9 +30,6 @@ export class SignInComponent {
 
     try{
       const response = await lastValueFrom(this.http.post<AuthResponse>(signInUrl,this.userCredentials));
-      console.log('Sign-up successful!', response);
-      alert('Account created successfully!');
-
       localStorage.setItem('authToken',response.token);
       localStorage.setItem('user', JSON.stringify(response));
       this.router.navigate(['/home'])
