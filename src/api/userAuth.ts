@@ -6,9 +6,10 @@ import {AuthService} from '../auth/auth.service';
 export interface User {
   id: number;
   email: string;
-  fullName: string;
+  add : string;
   password: string;
   role: string;
+  fullName: string;
   profile_picture: string;
   phone_number: string;
 }
@@ -16,6 +17,7 @@ export interface User {
 @Injectable({providedIn: 'root'})
 export class userAuthAPI{
   private apiUrl = 'http://localhost:8081/api/v1/auth/user';
+  private signUpUrl = 'http://localhost:8081/api/v1/auth/signup';
 
   constructor(private http: HttpClient,private authService: AuthService) {}
 
@@ -43,6 +45,13 @@ export class userAuthAPI{
       throw new Error("Unauthorized: Only admins can access this endpoint.");
     }
     return this.http.post<User>(`${this.apiUrl}/promote/${email}`, {}, { headers: this.getAuthToken() });
+  }
+
+  addUser(user: { name: string; phone_number: string; email: string; password: string }): Observable<any> {
+    if (!this.authService.isAdmin()) {
+      throw new Error('Unauthorized: Only admins can add users.');
+    }
+    return this.http.post(this.signUpUrl, user, { headers: this.getAuthToken() });
   }
 
   deleteUser(id:number): Observable<User[]> {
