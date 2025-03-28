@@ -41,7 +41,11 @@
         <td>{{ user.email }}</td>
         <td>{{ user.role }}</td>
         <td>
-          <button class="btn btn-danger btn-sm" (click)="deleteUser(user.id)" [disabled]="!user.id">
+          <button class="btn btn-warning btn-sm" (click)="openEditUserModal(user, editUserTemplate)">
+            <i class="fas fa-edit"></i>
+          </button>
+
+          <button class="btn btn-danger btn-sm" (click)="openDeleteUserModal(user,deleteUserTemplate)" [disabled]="!user.id">
             <i class="fas fa-trash"></i>
           </button>
         </td>
@@ -91,4 +95,55 @@
     </div>
   </div>
 </ng-template>
+
+<ng-template #editUserTemplate>
+  <div class="modal-container">
+    <div class="modal-title-container">
+      <h2>Edit User</h2>
+    </div>
+
+    <div class="modal-form-container">
+      <form #editUserForm="ngForm" (submit)="editUser(editUserForm)">
+        <label>Name</label>
+        <input type="text" [(ngModel)]="editingUser.fullName" name="fullName" required>
+
+        <label>Phone Number</label>
+        <input type="text" [(ngModel)]="editingUser.phone_number" name="phone_number" required>
+
+        <label>Email</label>
+        <input type="email" [(ngModel)]="editingUser.email" name="email" required>
+
+        <div class="modal-buttons-container">
+          <button class="btn-futuristic" type="submit">Save Changes</button>
+          <button class="btn-futuristic" type="button" (click)="closeEditUserModal()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</ng-template>
+
+
+<ng-template #deleteUserTemplate>
+  <div class="modal-container">
+    <div class="modal-title-container">
+      <h2>Delete User</h2>
+    </div>
+
+    <div class="modal-form-container">
+      <div class="deleting-message">
+        <p>Are you sure you want to delete the user
+          {{ deletingUser?.fullName }}?</p>
+      </div>
+
+      <div class="modal-buttons-container">
+        <!-- Directly call deleteUser with deletingUser.id -->
+        <button class="btn-futuristic" type="button" (click)="deleteUser(deletingUser?.id)">
+          Delete
+        </button>
+        <button class="btn-futuristic" type="button" (click)="closeDeleteUserModal()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
 <app-footer></app-footer>

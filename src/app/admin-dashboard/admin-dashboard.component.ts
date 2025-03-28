@@ -27,9 +27,9 @@ export class AdminDashboardComponent implements OnInit{
     password: '',
     role: UserRole.User
   };
-
+  editingUser: any = {};
+  deletingUser: User | null = null;
   modalRef?: BsModalRef;
-  UserRole = UserRole;
 
   constructor(
     private userAuthAPI: userAuthAPI,
@@ -61,7 +61,6 @@ export class AdminDashboardComponent implements OnInit{
     if (this.authService.isAdmin()) {
       try {
         this.users = await lastValueFrom(this.userAuthAPI.getAllUsers());
-        console.log("Users fetched successfully:", this.users);  // Log user data
       } catch (error) {
         console.error("Error loading users", error);
       }
@@ -81,7 +80,6 @@ export class AdminDashboardComponent implements OnInit{
         const user = this.users.find(u => u.id === userId);
         if (user) {
           await lastValueFrom(this.userAuthAPI.promoteUserToAdmin(user.email));
-          console.log(`User promoted: ${user.email}`);
         }
       }
 
@@ -112,8 +110,31 @@ export class AdminDashboardComponent implements OnInit{
     };
   }
 
+  openEditUserModal(user:any,template: TemplateRef<any>){
+    this.editingUser = { ...user };
+    this.modalRef = this.modalService.show(template);
+  }
+
+  closeEditUserModal(){
+    if (this.modalRef) {
+      this.modalRef.hide();
+    }
+    this.editingUser = {}
+  }
+
+  openDeleteUserModal(user: User, template: TemplateRef<any>) {
+    this.deletingUser = user;
+    this.modalRef = this.modalService.show(template);
+  }
+
+  closeDeleteUserModal(){
+    if (this.modalRef) {
+      this.modalRef.hide();
+    }
+    this.deletingUser = null;
+  }
+
   async addUser(userForm: any) {
-    console.log("User Form:",this.newUser)
     if (userForm.invalid) {
       alert("Please fill out all fields correctly.");
       return;
@@ -121,9 +142,6 @@ export class AdminDashboardComponent implements OnInit{
 
     try {
       await lastValueFrom(this.userAuthAPI.addUser(this.newUser));
-      console.log('User added successfully:', this.newUser.email);
-      alert('User added successfully!');
-
       userForm.resetForm();
       this.closeAddUserModal();
       this.loadAllUsers();
@@ -133,12 +151,29 @@ export class AdminDashboardComponent implements OnInit{
     }
   }
 
-  async deleteUser(id: number) {
-    if (this.authService.isAdmin()) {
+  async editUser(userForm:any){
+    if(userForm.invalid){
+      alert("Please fill out all fields correctly.");
+      return;
+    }
+
+    try {
+      await lastValueFrom(this.userAuthAPI.editUser(this.editingUser));
+      userForm.resetForm();
+      this.closeEditUserModal();
+      this.loadAllUsers();
+    }catch (error) {
+      console.error('Error edit user:', error);
+      alert('Failed to edit user.');
+    }
+  }
+
+  async deleteUser(id: any) {
+    if (this.authService.isAdmin() && id) {
       try {
         await lastValueFrom(this.userAuthAPI.deleteUser(id));
-        console.log("User deleted:", id);
-        this.loadAllUsers(); // Refresh list after deletion
+        this.closeDeleteUserModal();
+        this.loadAllUsers();
       } catch (error) {
         console.error("Error deleting user", error);
       }

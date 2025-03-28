@@ -236,6 +236,14 @@
   border-color: #007bff;
 }
 
+.deleting-message{
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+}
+
 .modal-buttons-container {
   display: flex;
   justify-content: flex-start;

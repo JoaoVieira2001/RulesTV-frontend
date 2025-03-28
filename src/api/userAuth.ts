@@ -54,6 +54,13 @@ export class userAuthAPI{
     return this.http.post(this.signUpUrl, user, { headers: this.getAuthToken() });
   }
 
+  editUser(user: User): Observable<User> {
+    if (!this.authService.isAdmin()) {
+      throw new Error('Unauthorized: Only admins can edit users.');
+    }
+    return this.http.put<User>(`${this.apiUrl}/update/${user.id}`, user, { headers: this.getAuthToken() });
+  }
+
   deleteUser(id:number): Observable<User[]> {
     if(!this.authService.isAdmin()){
       throw new Error("Unauthorized: Only admins can access this endpoint.");
