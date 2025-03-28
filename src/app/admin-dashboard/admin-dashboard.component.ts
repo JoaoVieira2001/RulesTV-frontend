@@ -1,7 +1,13 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, TemplateRef} from '@angular/core';
 import {User, userAuthAPI} from '../../api/userAuth';
 import {AuthService} from '../../auth/auth.service';
 import {lastValueFrom} from 'rxjs';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+
+enum UserRole {
+  User = 'user',
+  Admin = 'admin'
+}
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -13,8 +19,22 @@ export class AdminDashboardComponent implements OnInit{
   users: User[] = [];
   selectedUsers: number[] = [];
   promotionMode: boolean = false;
+  isAddingUser: boolean = false;
+  newUser = {
+    fullName: '',
+    phone_number: '',
+    email: '',
+    password: '',
+    role: UserRole.User
+  };
 
-  constructor(private userAuthAPI: userAuthAPI, public authService: AuthService) {
+  modalRef?: BsModalRef;
+  UserRole = UserRole;
+
+  constructor(
+    private userAuthAPI: userAuthAPI,
+    public authService: AuthService,
+    private modalService: BsModalService) {
   }
 
   ngOnInit() {
@@ -75,26 +95,43 @@ export class AdminDashboardComponent implements OnInit{
     }
   }
 
+  openAddUserModal(template: TemplateRef<any>){
+    this.modalRef = this.modalService.show(template);
+  }
 
-  async addUser() {
-    const newUser = {
-      name: 'Diogo Silva',
-      phone_number: '1234567890',
-      email: 'diogosilva@gmail.com',
-      password: 'Mobimiranda100'
+  closeAddUserModal(){
+    if (this.modalRef) {
+      this.modalRef.hide();
+    }
+    this.newUser = {
+      fullName: '',
+      phone_number: '',
+      email: '',
+      password: '',
+      role: UserRole.User
     };
+  }
+
+  async addUser(userForm: any) {
+    console.log("User Form:",this.newUser)
+    if (userForm.invalid) {
+      alert("Please fill out all fields correctly.");
+      return;
+    }
 
     try {
-      await lastValueFrom(this.userAuthAPI.addUser(newUser));
-      console.log('User added successfully:', newUser.email);
+      await lastValueFrom(this.userAuthAPI.addUser(this.newUser));
+      console.log('User added successfully:', this.newUser.email);
       alert('User added successfully!');
+
+      userForm.resetForm();
+      this.closeAddUserModal();
       this.loadAllUsers();
     } catch (error) {
       console.error('Error adding user:', error);
       alert('Failed to add user.');
     }
   }
-
 
   async deleteUser(id: number) {
     if (this.authService.isAdmin()) {

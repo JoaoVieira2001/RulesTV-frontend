@@ -36,6 +36,7 @@ import {MatSlideToggle} from '@angular/material/slide-toggle';
 import { BrowseComponent } from './browse/browse.component';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component'; // ✅ Import new HTTP client
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
     AppRoutingModule,
     Select,
     FormsModule,
+    ModalModule.forRoot(),
     CarouselComponent,
     CarouselIndicatorsComponent,
     CarouselInnerComponent,

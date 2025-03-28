@@ -47,7 +47,7 @@ export class userAuthAPI{
     return this.http.post<User>(`${this.apiUrl}/promote/${email}`, {}, { headers: this.getAuthToken() });
   }
 
-  addUser(user: { name: string; phone_number: string; email: string; password: string }): Observable<any> {
+  addUser(user: { fullName: string; phone_number: string; email: string; password: string }): Observable<any> {
     if (!this.authService.isAdmin()) {
       throw new Error('Unauthorized: Only admins can add users.');
     }

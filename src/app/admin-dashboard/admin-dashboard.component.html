@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 
-<div class="dashboard-container">
+<div class="dashboard-container" [class.blur-background]="isAddingUser">
   <div class="title-container">
     <h2 class="dashboard-title">Admin Dashboard</h2>
   </div>
@@ -14,7 +14,7 @@
       <button class="btn-futuristic btn-promote" (click)="togglePromotionMode()">
         {{ promotionMode ? 'Cancel Promotion' : 'User to Admin' }}
       </button>
-      <button class="btn-futuristic btn-add" (click)="addUser()">Add User</button>
+      <button class="btn-futuristic btn-add" (click)="openAddUserModal(addUserTemplate)">Add User</button>
     </div>
 
     <table class="dashboard-table">
@@ -55,4 +55,40 @@
   </div>
 </div>
 
+
+<ng-template #addUserTemplate>
+  <div class="modal-container">
+    <div class="modal-title-container">
+        <h2>Add New User</h2>
+    </div>
+
+    <div class="modal-form-container">
+      <form #userForm="ngForm" (submit)="addUser(userForm)">
+          <label>Name</label>
+          <input type="text" [(ngModel)]="newUser.fullName" name="fullName" required>
+
+          <label>Phone Number</label>
+          <input type="text" [(ngModel)]="newUser.phone_number" name="phone_number" required>
+
+          <label>Email</label>
+          <input type="email" [(ngModel)]="newUser.email" name="email" required>
+
+          <label>Password</label>
+          <input type="password" [(ngModel)]="newUser.password" name="password" required>
+
+          <label>Role</label>
+          <select [(ngModel)]="newUser.role" name="role" required>
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
+          </select>
+
+          <div class="modal-buttons-container">
+            <button class="btn-futuristic" type="submit">Add User</button>
+            <button class="btn-futuristic" type="button" (click)="closeAddUserModal()">Cancel
+            </button>
+          </div>
+      </form>
+    </div>
+  </div>
+</ng-template>
 <app-footer></app-footer>
