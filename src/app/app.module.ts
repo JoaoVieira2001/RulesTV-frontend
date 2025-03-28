@@ -17,13 +17,13 @@ import { SelectProfileComponent } from './select-profile/select-profile.componen
 import { SeriesComponent } from './series/series.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
-import {ButtonComponent} from '../components/Button/button.component';
+import { ButtonComponent } from '../components/Button/button.component';
 import { WatchlistComponent } from './watchlist/watchlist.component';
 import { NavbarComponent } from '../components/Navbar/navbar.component';
 import { FooterComponent } from '../components/Footer/footer.component';
 import { ForgotPasswordVerifyComponent } from './forgot-password-verify/forgot-password-verify.component';
-import {Select} from 'primeng/select';
-import {FormsModule} from '@angular/forms';
+import { Select } from 'primeng/select';
+import { FormsModule } from '@angular/forms';
 import {
   CarouselCaptionComponent,
   CarouselComponent, CarouselControlComponent,

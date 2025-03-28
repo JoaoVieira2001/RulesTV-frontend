@@ -8,6 +8,7 @@ import {Router} from '@angular/router';
 })
 export class AuthService {
   constructor(private http: HttpClient, private router:Router) {}
+
   private authUrl = 'http://localhost:8081/api/v1/auth';
 
   login(email: string, password: string) {
@@ -60,6 +61,7 @@ export class AuthService {
     const userInfo = JSON.parse(localStorage.getItem('user')|| '{}')
     return userInfo.role === 'ADMIN';
   }
+
 
   isLoggedIn(): boolean{
     const userInfo = JSON.parse(localStorage.getItem('user') || '{}');
