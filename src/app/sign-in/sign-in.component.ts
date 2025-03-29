@@ -7,6 +7,7 @@ interface AuthResponse {
   token: string;
   email: string;
   role: string;
+  id: number;
   full_name: string;
 }
 
@@ -36,6 +37,7 @@ export class SignInComponent {
       localStorage.setItem('authToken', response.token);
       localStorage.setItem('user', JSON.stringify(response));
       console.log("UserDAta:",JSON.stringify(response))
+      console.log("User ID:", response.id);
 
       this.router.navigate(['/home']);
     } catch (error: any) {

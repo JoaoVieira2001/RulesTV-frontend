@@ -62,9 +62,11 @@ export class userAuthAPI{
   }
 
   deleteUser(id:number): Observable<User[]> {
+   /*
     if(!this.authService.isAdmin()){
       throw new Error("Unauthorized: Only admins can access this endpoint.");
     }
+   */
     return this.http.delete<User[]>(`${this.apiUrl}/delete/${id}`, { headers: this.getAuthToken() });
   }
 }
