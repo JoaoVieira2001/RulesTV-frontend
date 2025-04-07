@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
-import {AuthService} from '../../auth/auth.service';
-
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,26 +8,16 @@ import {AuthService} from '../../auth/auth.service';
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
-export class NavbarComponent implements OnInit{
+export class NavbarComponent implements OnInit {
+  username: string = '';
+
   constructor(private router: Router, public authService: AuthService) {}
 
-  username: string = '';
-  logout(){
-    this.authService.logout()
-  }
-  navigateToHome() {
-    this.router.navigate(['/home']);
-  }
-
-  isAdmin(){
-    return this.authService.isAdmin();
-  }
-
-  ngOnInit(){
+  ngOnInit() {
     this.loadUserLocalStorage();
   }
 
-  loadUserLocalStorage(){
+  loadUserLocalStorage() {
     const userStored = localStorage.getItem('user');
     if (userStored) {
       const user = JSON.parse(userStored);
@@ -37,4 +26,17 @@ export class NavbarComponent implements OnInit{
       this.username = 'Unknown User';
     }
   }
+
+  logout() {
+    this.authService.logout();
+  }
+
+  navigateToHome() {
+    this.router.navigate(['/home']);
+  }
+
+  isAdmin() {
+    return this.authService.isAdmin();
+  }
+
 }

@@ -105,18 +105,19 @@
   text-shadow: 0 0 8px #1e3e92;
 }
 
-.btn-promote {
+.btn-promote-selected {
   background: linear-gradient(45deg, #3c6ff4, #1e3e92);
   color: white;
   text-shadow: 0 0 8px #00EDD9;
 }
 
-.btn-add:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(0, 237, 217, 1);
+.btn-depromote-selected {
+  background: linear-gradient(45deg, #313b59, #1e3e92);
+  color: white;
+  text-shadow: 0 0 8px #00EDD9;
 }
 
-.btn-promote:hover {
+.btn-add:hover {
   transform: scale(1.05);
   box-shadow: 0 0 15px rgba(0, 237, 217, 1);
 }
@@ -133,8 +134,9 @@
 }
 
 .btn-confirm {
-  background-color: #00EDD9;
-  color: black;
+  background: linear-gradient(45deg, #00EDD9, #00A9A5);
+  text-shadow: 0 0 8px #1e3e92;
+  color: white;
   font-weight: bold;
   padding: 10px 20px;
   margin-top: 15px;

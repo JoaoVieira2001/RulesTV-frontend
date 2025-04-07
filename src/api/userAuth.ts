@@ -17,6 +17,7 @@ export interface User {
 @Injectable({providedIn: 'root'})
 export class userAuthAPI{
   private apiUrl = 'http://localhost:8081/api/v1/auth/user';
+  private adminUrl = 'http://localhost:8081/api/v1/auth/admin';
   private signUpUrl = 'http://localhost:8081/api/v1/auth/signup';
 
   constructor(private http: HttpClient,private authService: AuthService) {}
@@ -47,6 +48,13 @@ export class userAuthAPI{
     return this.http.post<User>(`${this.apiUrl}/promote/${email}`, {}, { headers: this.getAuthToken() });
   }
 
+  depromoteAdminToUser(email: string): Observable<User> {
+    if (!this.authService.isAdmin()) {
+      throw new Error("Unauthorized: Only admins can access this endpoint.");
+    }
+    return this.http.post<User>(`${this.adminUrl}/downgrade/${email}`, {}, { headers: this.getAuthToken() });
+  }
+
   addUser(user: { fullName: string; phone_number: string; email: string; password: string }): Observable<any> {
     if (!this.authService.isAdmin()) {
       throw new Error('Unauthorized: Only admins can add users.');
@@ -55,9 +63,11 @@ export class userAuthAPI{
   }
 
   editUser(user: User): Observable<User> {
-    if (!this.authService.isAdmin()) {
-      throw new Error('Unauthorized: Only admins can edit users.');
+    /*
+    if(!this.authService.isAdmin()){
+      throw new Error("Unauthorized: Only admins can access this endpoint.");
     }
+   */
     return this.http.put<User>(`${this.apiUrl}/update/${user.id}`, user, { headers: this.getAuthToken() });
   }
 

@@ -11,16 +11,19 @@
 
   <div class="table-container" *ngIf="users.length > 0">
     <div class="button-container">
-      <button class="btn-futuristic btn-promote" (click)="togglePromotionMode()">
+      <button class="btn-futuristic btn-add" [ngClass]="{ 'btn-promote-selected': promotionMode }" (click)="togglePromotionMode()">
         {{ promotionMode ? 'Cancel Promotion' : 'User to Admin' }}
       </button>
       <button class="btn-futuristic btn-add" (click)="openAddUserModal(addUserTemplate)">Add User</button>
+      <button class="btn-futuristic btn-add" [ngClass]="{ 'btn-depromote-selected': depromotionMode }" (click)="toggleDepromotionMode()">
+        {{ depromotionMode ? 'Cancel Promotion' : 'Admin to User' }}
+      </button>
     </div>
 
     <table class="dashboard-table">
       <thead>
       <tr>
-        <th *ngIf="promotionMode">Select</th>
+        <th *ngIf="promotionMode || depromotionMode">Select</th>
         <th>#</th>
         <th>Name</th>
         <th>Phone Number</th>
@@ -32,8 +35,10 @@
 
       <tbody>
       <tr *ngFor="let user of users; let i = index" [class.selected]="selectedUsers.includes(user.id)">
-        <td *ngIf="promotionMode">
-          <input type="checkbox" (change)="toggleUserSelection(user)" [checked]="selectedUsers.includes(user.id)">
+        <td *ngIf="promotionMode || depromotionMode">
+          <input type="checkbox"
+                 (change)="toggleUserSelection(user)"
+                 [checked]="selectedUsers.includes(user.id)">
         </td>
         <td>{{ i + 1 }}</td>
         <td>{{ user.fullName }}</td>
@@ -53,8 +58,22 @@
       </tbody>
     </table>
 
-    <button *ngIf="promotionMode" class="btn-futuristic btn-confirm" (click)="promoteSelectedUsers()" [disabled]="selectedUsers.length === 0">
+    <button
+      *ngIf="promotionMode"
+      class="btn-futuristic btn-confirm"
+      (click)="promoteSelectedUsers()"
+      [disabled]="selectedUsers.length === 0"
+    >
       Confirm Promotion
+    </button>
+
+    <button
+      *ngIf="depromotionMode"
+      class="btn-futuristic btn-confirm"
+      (click)="depromoteSelectedAdmins()"
+      [disabled]="selectedUsers.length === 0"
+    >
+      Confirm Demotion
     </button>
   </div>
 </div>

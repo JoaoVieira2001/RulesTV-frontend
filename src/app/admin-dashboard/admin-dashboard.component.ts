@@ -19,6 +19,7 @@ export class AdminDashboardComponent implements OnInit{
   users: User[] = [];
   selectedUsers: number[] = [];
   promotionMode: boolean = false;
+  depromotionMode: boolean = false;
   isAddingUser: boolean = false;
   newUser = {
     fullName: '',
@@ -44,6 +45,13 @@ export class AdminDashboardComponent implements OnInit{
   togglePromotionMode(){
     this.promotionMode = !this.promotionMode;
     if(!this.promotionMode){
+      this.selectedUsers = [];
+    }
+  }
+
+  toggleDepromotionMode(){
+    this.depromotionMode = !this.depromotionMode;
+    if(!this.depromotionMode){
       this.selectedUsers = [];
     }
   }
@@ -92,6 +100,31 @@ export class AdminDashboardComponent implements OnInit{
       alert("Failed to promote selected users.");
     }
   }
+
+  async depromoteSelectedAdmins() {
+    if (this.selectedUsers.length === 0) {
+      alert("Please select at least one admin to demote.");
+      return;
+    }
+
+    try {
+      for (let userId of this.selectedUsers) {
+        const user = this.users.find(u => u.id === userId);
+        if (user) {
+          await lastValueFrom(this.userAuthAPI.depromoteAdminToUser(user.email));
+        }
+      }
+
+      alert("Selected admins have been demoted to User!");
+      this.selectedUsers = [];
+      this.depromotionMode = false;
+      this.loadAllUsers();
+    } catch (error) {
+      console.error("Error demoting users", error);
+      alert("Failed to demote selected admins.");
+    }
+  }
+
 
   openAddUserModal(template: TemplateRef<any>){
     this.modalRef = this.modalService.show(template);

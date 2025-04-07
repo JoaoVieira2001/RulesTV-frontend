@@ -37,6 +37,10 @@ import { BrowseComponent } from './browse/browse.component';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component'; // ✅ Import new HTTP client
 import { ModalModule } from 'ngx-bootstrap/modal';
+import {MatSidenav, MatSidenavContainer} from '@angular/material/sidenav';
+import {MatToolbar} from '@angular/material/toolbar';
+import {MatListItem, MatNavList} from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
@@ -61,7 +65,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     FooterComponent,
     ForgotPasswordVerifyComponent,
     BrowseComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -78,6 +82,12 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     CarouselControlComponent,
     ToggleSwitch,
     MatSlideToggle,
+    MatSidenavContainer,
+    MatSidenav,
+    MatSidenavModule,
+    MatToolbar,
+    MatNavList,
+    MatListItem,
   ],
   providers: [
     provideHttpClient(withInterceptorsFromDi())

@@ -13,8 +13,13 @@
             <label class="label-style" for="profileName">Profile Name</label>
             <input type="text"
                    id="profileName"
+                   placeholder="Enter profile name"
                    [(ngModel)]="profileName"
-                   placeholder="Enter profile name">
+            >
+            <button class="save-name-btn"
+                    *ngIf="profileName && profileName !== '' "
+                    (click)="editUserName()">Save
+            </button>
           </div>
         </div>
 
