@@ -20,6 +20,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { ButtonComponent } from '../components/Button/button.component';
 import { WatchlistComponent } from './watchlist/watchlist.component';
 import { NavbarComponent } from '../components/Navbar/navbar.component';
+import { SidebarComponent } from '../components/Sidebar/sidebar.component';
 import { FooterComponent } from '../components/Footer/footer.component';
 import { ForgotPasswordVerifyComponent } from './forgot-password-verify/forgot-password-verify.component';
 import { Select } from 'primeng/select';
@@ -41,6 +42,10 @@ import {MatSidenav, MatSidenavContainer} from '@angular/material/sidenav';
 import {MatToolbar} from '@angular/material/toolbar';
 import {MatListItem, MatNavList} from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import {SidebarModule} from 'primeng/sidebar';
+import {ButtonDirective} from 'primeng/button';
 
 @NgModule({
   declarations: [
@@ -62,6 +67,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     WatchlistComponent,
     ButtonComponent,
     NavbarComponent,
+    SidebarComponent,
     FooterComponent,
     ForgotPasswordVerifyComponent,
     BrowseComponent,
@@ -80,6 +86,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     CarouselItemComponent,
     CarouselCaptionComponent,
     CarouselControlComponent,
+    SidebarModule,
     ToggleSwitch,
     MatSlideToggle,
     MatSidenavContainer,
@@ -88,6 +95,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatToolbar,
     MatNavList,
     MatListItem,
+    MatButtonModule,
+    MatIconModule,
+    ButtonDirective,
   ],
   providers: [
     provideHttpClient(withInterceptorsFromDi())

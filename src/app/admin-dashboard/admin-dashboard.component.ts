@@ -21,6 +21,8 @@ export class AdminDashboardComponent implements OnInit{
   promotionMode: boolean = false;
   depromotionMode: boolean = false;
   isAddingUser: boolean = false;
+  isSidebarVisible: boolean = true;
+
   newUser = {
     fullName: '',
     phone_number: '',
@@ -213,5 +215,8 @@ export class AdminDashboardComponent implements OnInit{
     }
   }
 
+  toggleSidebar() {
+    this.isSidebarVisible = !this.isSidebarVisible;
+  }
 
 }

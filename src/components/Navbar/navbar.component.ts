@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../auth/auth.service';
+import {SidebarService} from '../../services/sidebar.service';
 
 @Component({
   selector: 'app-navbar',
@@ -11,10 +12,18 @@ import { AuthService } from '../../auth/auth.service';
 export class NavbarComponent implements OnInit {
   username: string = '';
 
-  constructor(private router: Router, public authService: AuthService) {}
+  constructor(private router: Router,
+              public authService: AuthService,
+              private sidebarService: SidebarService
+  ) {}
 
   ngOnInit() {
     this.loadUserLocalStorage();
+  }
+
+  toggleSidebar(){
+    this.sidebarService.toggleSidebar();
+    console.log("CLik")
   }
 
   loadUserLocalStorage() {

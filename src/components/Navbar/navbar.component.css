@@ -19,6 +19,14 @@
   width: 30%;
 }
 
+.nav-left-container .icon-btn {
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 24px;
+}
+
 .nav-links {
   list-style: none;
   display: flex;
