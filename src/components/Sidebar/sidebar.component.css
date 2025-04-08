@@ -1,0 +1,61 @@
+.example-container {
+  height: 100%;
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+}
+
+.example-sidenav {
+  width: 250px;
+  background: rgba(20, 26, 26, 0.8);
+  backdrop-filter: blur(10px);
+  color: #00EDD9;
+  border-right: 1px solid #00EDD9;
+  padding: 30px 20px;
+  font-family: 'Orbitron', sans-serif;
+  box-shadow: 4px 0 10px rgba(0, 237, 217, 0.2);
+}
+
+.example-sidenav h3 {
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  text-shadow: 0 0 5px #00EDD9;
+  -webkit-text-stroke: 1px #182536;
+  margin-bottom: 20px;
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-menu li {
+  margin-bottom: 15px;
+}
+
+.sidebar-menu a {
+  color: #00EDD9;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.sidebar-menu a:hover {
+  color: #ffffff;
+  text-shadow: 0 0 10px #00EDD9;
+}
+
+button[mat-raised-button] {
+  margin-top: 20px;
+  background: linear-gradient(45deg, #00EDD9, #00A9A5);
+  color: white;
+  box-shadow: 0 0 10px rgba(0, 237, 217, 0.7);
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: transform 0.2s ease;
+}
+
+button[mat-raised-button]:hover {
+  transform: scale(1.05);
+}

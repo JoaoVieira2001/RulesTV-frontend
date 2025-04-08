@@ -1,0 +1,17 @@
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side" [opened]="isSidebarVisible">
+    <h3>Admin Panel</h3>
+    <ul class="sidebar-menu">
+      <li><a routerLink="/admin/users">Users</a></li>
+      <li><a routerLink="/admin/content">Content</a></li>
+      <li><a routerLink="/admin/reports">Reports</a></li>
+    </ul>
+
+    <button mat-raised-button (click)="toggleFiller()">Toggle extra text</button>
+    <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+    <!-- Main content if any -->
+  </div>
+</mat-drawer-container>
