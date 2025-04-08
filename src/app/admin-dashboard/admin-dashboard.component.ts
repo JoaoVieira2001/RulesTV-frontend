@@ -22,6 +22,7 @@ export class AdminDashboardComponent implements OnInit{
   depromotionMode: boolean = false;
   isAddingUser: boolean = false;
   isSidebarVisible: boolean = true;
+  showSidebarBtn: boolean = false;
 
   newUser = {
     fullName: '',

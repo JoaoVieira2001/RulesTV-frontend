@@ -1,85 +1,89 @@
 <app-navbar></app-navbar>
 
-  <div class="dashboard-container"
-       [class.sidebar-active]="isSidebarVisible"
-       [class.blur-background]="isAddingUser">
+<div class="dashboard-container"
+     [class.sidebar-active]="isSidebarVisible"
+     [class.blur-background]="isAddingUser">
 
-    <app-sidebar *ngIf="isSidebarVisible"></app-sidebar>
+  <app-sidebar *ngIf="isSidebarVisible"></app-sidebar>
 
-    <div class="no-users-message" *ngIf="users.length === 0">
-      <p>No users available.</p>
-    </div>
-
-    <div class="table-container" *ngIf="users.length > 0">
-      <div class="button-container">
-        <button class="btn-futuristic btn-add" [ngClass]="{ 'btn-promote-selected': promotionMode }" (click)="togglePromotionMode()">
-          {{ promotionMode ? 'Cancel Promotion' : 'User to Admin' }}
-        </button>
-        <button class="btn-futuristic btn-add" (click)="openAddUserModal(addUserTemplate)">Add User</button>
-        <button class="btn-futuristic btn-add" [ngClass]="{ 'btn-depromote-selected': depromotionMode }" (click)="toggleDepromotionMode()">
-          {{ depromotionMode ? 'Cancel Promotion' : 'Admin to User' }}
-        </button>
-      </div>
-
-      <table class="dashboard-table">
-        <thead>
-        <tr>
-          <th *ngIf="promotionMode || depromotionMode">Select</th>
-          <th>#</th>
-          <th>Name</th>
-          <th>Phone Number</th>
-          <th>Email</th>
-          <th>Role</th>
-          <th>Action</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        <tr *ngFor="let user of users; let i = index" [class.selected]="selectedUsers.includes(user.id)">
-          <td *ngIf="promotionMode || depromotionMode">
-            <input type="checkbox"
-                   (change)="toggleUserSelection(user)"
-                   [checked]="selectedUsers.includes(user.id)">
-          </td>
-          <td>{{ i + 1 }}</td>
-          <td>{{ user.fullName }}</td>
-          <td>{{ user.phone_number }}</td>
-          <td>{{ user.email }}</td>
-          <td>{{ user.role }}</td>
-          <td>
-            <button class="btn btn-warning btn-sm" (click)="openEditUserModal(user, editUserTemplate)">
-              <i class="fas fa-edit"></i>
-            </button>
-
-            <button class="btn btn-danger btn-sm" (click)="openDeleteUserModal(user, deleteUserTemplate)" [disabled]="!user.id">
-              <i class="fas fa-trash"></i>
-            </button>
-          </td>
-        </tr>
-        </tbody>
-      </table>
-
-      <button
-        *ngIf="promotionMode"
-        class="btn-futuristic btn-confirm"
-        (click)="promoteSelectedUsers()"
-        [disabled]="selectedUsers.length === 0"
-      >
-        Confirm Promotion
-      </button>
-
-      <button
-        *ngIf="depromotionMode"
-        class="btn-futuristic btn-confirm"
-        (click)="depromoteSelectedAdmins()"
-        [disabled]="selectedUsers.length === 0"
-      >
-        Confirm Demotion
-      </button>
-    </div>
+  <div class="no-users-message" *ngIf="users.length === 0">
+    <p>No users available.</p>
   </div>
 
-<!-- Add User Modal -->
+  <div class="table-container" *ngIf="users.length > 0">
+    <div class="button-container">
+      <button class="btn-futuristic btn-add"
+              [ngClass]="{ 'btn-promote-selected': promotionMode }"
+              (click)="togglePromotionMode()">
+        {{ promotionMode ? 'Cancel Promotion' : 'User to Admin' }}
+      </button>
+
+      <button class="btn-futuristic btn-add" (click)="openAddUserModal(addUserTemplate)">
+        Add User
+      </button>
+
+      <button class="btn-futuristic btn-add"
+              [ngClass]="{ 'btn-depromote-selected': depromotionMode }"
+              (click)="toggleDepromotionMode()">
+        {{ depromotionMode ? 'Cancel Promotion' : 'Admin to User' }}
+      </button>
+    </div>
+
+    <table class="dashboard-table">
+      <thead>
+      <tr>
+        <th *ngIf="promotionMode || depromotionMode">Select</th>
+        <th>#</th>
+        <th>Name</th>
+        <th>Phone Number</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let user of users; let i = index" [class.selected]="selectedUsers.includes(user.id)">
+        <td *ngIf="promotionMode || depromotionMode">
+          <input type="checkbox"
+                 (change)="toggleUserSelection(user)"
+                 [checked]="selectedUsers.includes(user.id)">
+        </td>
+        <td>{{ i + 1 }}</td>
+        <td>{{ user.fullName }}</td>
+        <td>{{ user.phone_number }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.role }}</td>
+        <td>
+          <button class="btn btn-warning btn-sm" (click)="openEditUserModal(user, editUserTemplate)">
+            <i class="fas fa-edit"></i>
+          </button>
+
+          <button class="btn btn-danger btn-sm"
+                  (click)="openDeleteUserModal(user, deleteUserTemplate)"
+                  [disabled]="!user.id">
+            <i class="fas fa-trash"></i>
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+    <button *ngIf="promotionMode"
+            class="btn-futuristic btn-confirm"
+            (click)="promoteSelectedUsers()"
+            [disabled]="selectedUsers.length === 0">
+      Confirm Promotion
+    </button>
+
+    <button *ngIf="depromotionMode"
+            class="btn-futuristic btn-confirm"
+            (click)="depromoteSelectedAdmins()"
+            [disabled]="selectedUsers.length === 0">
+      Confirm Demotion
+    </button>
+  </div>
+</div>
+
 <ng-template #addUserTemplate>
   <div class="modal-container">
     <div class="modal-title-container">
@@ -115,7 +119,6 @@
   </div>
 </ng-template>
 
-<!-- Edit User Modal -->
 <ng-template #editUserTemplate>
   <div class="modal-container">
     <div class="modal-title-container">
@@ -142,7 +145,6 @@
   </div>
 </ng-template>
 
-<!-- Delete User Modal -->
 <ng-template #deleteUserTemplate>
   <div class="modal-container">
     <div class="modal-title-container">
